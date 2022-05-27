@@ -84,7 +84,7 @@ fi
 cat "${SCRIPT_DIR}/terraform.tfvars.template" | \
   sed "s/PREFIX/${PREFIX_NAME}/g" | \
   sed "s/RWX_STORAGE/${RWX_STORAGE}/g" | \
-  sed "s/RWO_STORAGE/${RWO_STORAGE}/g" \
+  sed "s/RWO_STORAGE/${RWO_STORAGE}/g" | \
   sed "s/STORAGEVENDOR/${STORAGEVENDOR}/g" \
   > "${SCRIPT_DIR}/terraform.tfvars"
 
