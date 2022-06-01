@@ -13,12 +13,12 @@ spec:
   modules:
     - name: azure-portworx
       alias: azure-portworx
-      version: v0.0.2
+      version: v0.0.3
     - name: ocp-login
       alias: cluster
       version: v1.2.14
   variables:
-    - name: azure-portworx_variable cluster_name {
+    - name: azure-portworx_cluster_name
       type: string
       description: The name of the ARO cluster
     - name: region

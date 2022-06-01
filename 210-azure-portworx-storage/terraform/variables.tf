@@ -23,7 +23,7 @@ variable "azure_tenant_id" {
   description = "the value of azure_tenant_id"
   default = ""
 }
-variable "azure-portworx_variable cluster_name {" {
+variable "azure-portworx_cluster_name" {
   type = string
   description = "The name of the ARO cluster"
 }

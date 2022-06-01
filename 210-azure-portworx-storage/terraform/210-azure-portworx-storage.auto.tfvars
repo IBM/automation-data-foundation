@@ -1,5 +1,5 @@
-## azure-portworx_variable cluster_name {: The name of the ARO cluster
-#azure-portworx_variable cluster_name {=""
+## azure-portworx_cluster_name: The name of the ARO cluster
+#azure-portworx_cluster_name=""
 
 ## region: Azure Region the cluster is deployed in
 #region=""
