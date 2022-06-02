@@ -323,14 +323,16 @@ The `gitops-repo_repo`, `gitops-repo_token`, `entitlement_key`, `server_url`, an
 25. Change directories to the `210-*` folder and run the following commands to deploy storage into your cluster:
 
     ```
-    cd 210-ibm-odf-storage
+    cd 210-ibm-portworx-storage
     terraform init
     terraform apply --auto-approve
     ```
     
+    > This folder will vary based on the platform and storage options that you selected in earlier steps.
+26. 
     Storage configuration will run asynchronously in the background inside of the Cluster and should be complete within 10 minutes.
     
-26. Change directories to the `300-cloud-pak-for-data-entitlement` folder and run the following commands to deploy entitlements into your cluster:
+27. Change directories to the `300-cloud-pak-for-data-entitlement` folder and run the following commands to deploy entitlements into your cluster:
 
     ```
     cd ../300-cloud-pak-for-data-entitlement
@@ -340,7 +342,7 @@ The `gitops-repo_repo`, `gitops-repo_token`, `entitlement_key`, `server_url`, an
     
     > This step **does not** require worker nodes to be restarted as some other installation methods describe.
 
-27. Change directories to the `305-cloud-pak-for-data-foundation` folder and run the following commands to deploy Data Foundation into the cluster.
+28. Change directories to the `305-cloud-pak-for-data-foundation` folder and run the following commands to deploy Data Foundation into the cluster.
 
     ```
     cd ../305-cloud-pak-for-data-foundation
@@ -350,17 +352,17 @@ The `gitops-repo_repo`, `gitops-repo_token`, `entitlement_key`, `server_url`, an
 
     Data Foundation deployment will run asynchronously in the background, and may require up to 45 minutes to complete.
 
-28. You can check the progress of the deployment by opening up Argo CD (OpenShift GitOps).  From the OpenShift user interface, click on the Application menu 3x3 Icon on the header and select **Cluster Argo CD** menu item.)
+29. You can check the progress of the deployment by opening up Argo CD (OpenShift GitOps).  From the OpenShift user interface, click on the Application menu 3x3 Icon on the header and select **Cluster Argo CD** menu item.)
 
     This process will take between 30 and 45 minutes to complete.  During the deployment, several cluster projects/namespaces and deployments will be created.
 
-29. Once deployment is complete, go back into the OpenShift cluster user interface and navigate to view `Routes` for the `cp4d` namespace.  Here you can see the URL to the deployed Data Foundation instance.  Open this url in a new browser window.
+30. Once deployment is complete, go back into the OpenShift cluster user interface and navigate to view `Routes` for the `cp4d` namespace.  Here you can see the URL to the deployed Data Foundation instance.  Open this url in a new browser window.
 
     ![Reference Architecture](images/cp4d-route.jpg)
 
-30. Navigate to `Secrets` in the `cp4d` namespace, and find the `admin-user-details` secret.  Copy the value of `initial_admin_password` key inside of that secret. 
+31. Navigate to `Secrets` in the `cp4d` namespace, and find the `admin-user-details` secret.  Copy the value of `initial_admin_password` key inside of that secret. 
 
-31. Go back to the Cloud Pak for Data Foundation instance that you opened in a separate window.  Log in using the username `admin` with the password copied in the previous step.
+32. Go back to the Cloud Pak for Data Foundation instance that you opened in a separate window.  Log in using the username `admin` with the password copied in the previous step.
 
 ## Summary
 
