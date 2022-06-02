@@ -330,10 +330,10 @@ The `gitops-repo_repo`, `gitops-repo_token`, `entitlement_key`, `server_url`, an
     
     Storage configuration will run asynchronously in the background inside of the Cluster and should be complete within 10 minutes.
     
-26. Change directories to the `305-cloud-pak-for-data-foundation` folder and run the following commands to deploy entitlements into your cluster:
+26. Change directories to the `300-cloud-pak-for-data-entitlement` folder and run the following commands to deploy entitlements into your cluster:
 
     ```
-    cd ../305-cloud-pak-for-data-entitlement
+    cd ../300-cloud-pak-for-data-entitlement
     terraform init
     terraform apply --auto-approve
     ```
