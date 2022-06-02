@@ -1,5 +1,5 @@
 module "aws-portworx" {
-  source = "github.com/cloud-native-toolkit/terraform-aws-portworx?ref=v0.0.4"
+  source = "github.com/cloud-native-toolkit/terraform-aws-portworx?ref=v0.0.5"
 
   access_key = var.access_key
   cluster_config_file = module.cluster.config_file_path
@@ -13,7 +13,7 @@ module "aws-portworx" {
   secret_key = var.secret_key
 }
 module "cluster" {
-  source = "github.com/cloud-native-toolkit/terraform-ocp-login?ref=v1.2.14"
+  source = "github.com/cloud-native-toolkit/terraform-ocp-login?ref=v1.2.16"
 
   cluster_version = var.cluster_cluster_version
   ingress_subdomain = var.cluster_ingress_subdomain

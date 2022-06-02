@@ -13,10 +13,10 @@ spec:
   modules:
     - name: aws-portworx
       alias: aws-portworx
-      version: v0.0.4
+      version: v0.0.5
     - name: ocp-login
       alias: cluster
-      version: v1.2.14
+      version: v1.2.16
   variables:
     - name: region
       type: string

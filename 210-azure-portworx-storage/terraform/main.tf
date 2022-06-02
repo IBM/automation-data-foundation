@@ -18,7 +18,7 @@ module "azure-portworx" {
   resource_group_name = var.azure-portworx_resource_group_name
 }
 module "cluster" {
-  source = "github.com/cloud-native-toolkit/terraform-ocp-login?ref=v1.2.14"
+  source = "github.com/cloud-native-toolkit/terraform-ocp-login?ref=v1.2.16"
 
   cluster_version = var.cluster_cluster_version
   ingress_subdomain = var.cluster_ingress_subdomain
