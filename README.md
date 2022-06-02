@@ -177,18 +177,20 @@ Steps:
     TF_VAR_entitlement_key=
     
     # Only needed if targeting IBM Cloud Deployment
-    TF_VAR_ibmcloud_api_key=""
+    TF_VAR_ibmcloud_api_key=
     
     # Only needed if targeting AWS Deployment
-    TF_VAR_access_key=""
-    TF_VAR_secret_key=""
+    TF_VAR_access_key=
+    TF_VAR_secret_key=
     
     # Only needed if targeting Azure Deployment
-    TF_VAR_azure_subscription_id=""
-    TF_VAR_azure_client_id=""
-    TF_VAR_azure_client_secret=""
-    TF_VAR_azure_tenant_id=""
+    TF_VAR_azure_subscription_id=
+    TF_VAR_azure_client_id=
+    TF_VAR_azure_client_secret=
+    TF_VAR_azure_tenant_id=
     ```
+   
+    > ⚠️ Do not wrap any values in `credentials.properties` in quotes
 
 
 4. Add your Git Hub username and your Personal Access Token to `gitops_repo_username` and `gitops_repo_token`
