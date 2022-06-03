@@ -1,11 +1,42 @@
 #!/bin/bash
 
-# IBM Ecosystem Labs
+# IBM GSI Ecosystem Lab
 
 SCRIPT_DIR="$(cd $(dirname $0); pwd -P)"
-SRC_DIR="${SCRIPT_DIR}"
+SRC_DIR="${SCRIPT_DIR}/automation"
 
-DOCKER_IMAGE="quay.io/ibmgaragecloud/cli-tools:v1.1"
+if [[ ! -d "${SRC_DIR}" ]]; then
+  SRC_DIR="${SCRIPT_DIR}"
+fi
+
+
+# check if colima is installed, and apply dns override if no override file already exists
+if command -v colima &> /dev/null
+then
+  COLIMA_OVERRIDE_FILE="~/.lima/_config/override.yaml"
+
+  if [ ! -f $COLIMA_OVERRIDE_FILE ]; then
+    echo "applying colima dns override..."
+
+    COLIMA_STATUS="$(colima status 2>&1)"
+    SUB='colima is running'
+    if [[ "$COLIMA_STATUS" == *"$SUB"* ]]; then
+      echo "stopping colima"
+      colima stop
+    fi
+
+    echo "writing ~/.lima/_config/override.yaml"
+    mkdir -p ~/.lima/_config
+    printf "useHostResolver: false\ndns:\n- 8.8.8.8" > ~/.lima/_config/override.yaml
+
+    if [[ "$COLIMA_STATUS" == *"$SUB"* ]]; then
+      echo "restarting colima"
+      colima start
+    fi
+  fi
+fi
+
+DOCKER_IMAGE="quay.io/cloudnativetoolkit/cli-tools:v1.1"
 
 SUFFIX=$(echo $(basename ${SCRIPT_DIR}) | base64 | sed -E "s/[^a-zA-Z0-9_.-]//g" | sed -E "s/.*(.{5})/\1/g")
 CONTAINER_NAME="cli-tools-${SUFFIX}"
@@ -28,9 +59,10 @@ fi
 
 echo "Initializing container ${CONTAINER_NAME} from ${DOCKER_IMAGE}"
 ${DOCKER_CMD} run -itd --name ${CONTAINER_NAME} \
-   -v ${SRC_DIR}:/home/devops/src \
+   -v ${SRC_DIR}:/terraform \
+   -v workspace:/workspaces \
    ${ENV_FILE} \
-   -w /home/devops/src \
+   -w /terraform \
    ${DOCKER_IMAGE}
 
 echo "Attaching to running container..."
