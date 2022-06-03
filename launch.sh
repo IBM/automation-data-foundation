@@ -1,15 +1,11 @@
 #!/bin/bash
 
-# IBM GSI Ecosystem Lab
+# IBM Ecosystem Labs
 
 SCRIPT_DIR="$(cd $(dirname $0); pwd -P)"
-SRC_DIR="${SCRIPT_DIR}/automation"
+SRC_DIR="${SCRIPT_DIR}"
 
-if [[ ! -d "${SRC_DIR}" ]]; then
-  SRC_DIR="${SCRIPT_DIR}"
-fi
-
-DOCKER_IMAGE="quay.io/cloudnativetoolkit/cli-tools:v1.1"
+DOCKER_IMAGE="quay.io/ibmgaragecloud/cli-tools:v1.1"
 
 SUFFIX=$(echo $(basename ${SCRIPT_DIR}) | base64 | sed -E "s/[^a-zA-Z0-9_.-]//g" | sed -E "s/.*(.{5})/\1/g")
 CONTAINER_NAME="cli-tools-${SUFFIX}"
@@ -32,10 +28,9 @@ fi
 
 echo "Initializing container ${CONTAINER_NAME} from ${DOCKER_IMAGE}"
 ${DOCKER_CMD} run -itd --name ${CONTAINER_NAME} \
-   -v ${SRC_DIR}:/terraform \
-   -v workspace:/workspaces \
+   -v ${SRC_DIR}:/home/devops/src \
    ${ENV_FILE} \
-   -w /terraform \
+   -w /home/devops/src \
    ${DOCKER_IMAGE}
 
 echo "Attaching to running container..."
