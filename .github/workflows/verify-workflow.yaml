@@ -51,8 +51,8 @@ jobs:
           RANDOM_PREFIX=$(cat /dev/urandom | tr -dc '[:alpha:]' | tr '[:upper:]' '[:lower:]' | fold -w ${1:-5} | head -n 1)
           PROVIDER_CHAR=$(echo "${{ matrix.provider }}" | fold -w ${1:-2} | head -n 1)
           STORAGE_CHAR=$(echo "${{ matrix.storage }}" | fold -w ${1:-1} | head -n 1)
-          echo "./setup-workspace.sh -p ${{ matrix.provider }} -s ${{ matrix.storage }} -n "${FLAVOR_CHAR}${STORAGE_CHAR}-${RANDOM_PREFIX}" -r eu-de"
-          ./setup-workspace.sh -p ${{ matrix.provider }} -s ${{ matrix.storage }} -n "${FLAVOR_CHAR}${STORAGE_CHAR}-${RANDOM_PREFIX}" -r eu-de
+          echo "./setup-workspace.sh -p ${{ matrix.provider }} -s ${{ matrix.storage }} -n ${FLAVOR_CHAR}${STORAGE_CHAR}-${RANDOM_PREFIX}"
+          ./setup-workspace.sh -p ${{ matrix.provider }} -s ${{ matrix.storage }} -n "${FLAVOR_CHAR}${STORAGE_CHAR}-${RANDOM_PREFIX}"
           cd ../workspaces/current
           
           echo ""
