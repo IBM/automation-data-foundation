@@ -20,6 +20,13 @@ STORAGE=""
 PREFIX_NAME=""
 STORAGEVENDOR=""
 
+
+
+if [[ "$1" == "-h" ]]; then
+  Usage
+  exit 1
+fi
+
 # Get the options
 while getopts ":p:s:n:h:" option; do
    case $option in

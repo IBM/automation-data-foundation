@@ -6,8 +6,8 @@ metadata:
     type: software
     code: '305'
   annotations:
-    displayName: IBM Cloud Pak for Data
-    description: GitOps deployment of Data Fabric Solution on Cloud pak for Data
+    displayName: Data Foundation
+    description: GitOps deployment of Data Foundation for Cloud pak for Data
 spec:
   modules:
     - name: cp4d-instance
