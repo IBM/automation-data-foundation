@@ -88,6 +88,33 @@ else
   STORAGEVENDOR="RWX-storage-class"
 fi
 
+if [[ -z "${PREFIX_NAME}" ]]; then
+  echo -n "Provide a prefix name: "
+  read -r PREFIX_NAME
+fi
+
+if [[ "${CLOUD_PROVIDER}" =~ aws|azure ]] && [[ -z "${PORTWORX_SPEC_FILE}" ]]; then
+  DEFAULT_FILE=$(find . -name "portworx*.yaml" -maxdepth 1 -exec basename {} \; | head -1)
+
+  while [[ -z "${PORTWORX_SPEC_FILE}" ]]; do
+    echo -n "Provide the Portworx config spec file name: [${DEFAULT_FILE}] "
+    read -r PORTWORX_SPEC_FILE
+
+    if [[ -z "${PORTWORX_SPEC_FILE}" ]] && [[ -n "${DEFAULT_FILE}" ]]; then
+      PORTWORX_SPEC_FILE="${DEFAULT_FILE}"
+    fi
+  done
+
+  echo ""
+elif [[ "${CLOUD_PROVIDER}" == "ibm" ]]; then
+  PORTWORX_SPEC_FILE=""
+fi
+
+if [[ -n "${PORTWORX_SPEC_FILE}" ]] && [[ ! -f "${PORTWORX_SPEC_FILE}" ]]; then
+  echo "Portworx spec file not found: ${PORTWORX_SPEC_FILE}" >&2
+  exit 1
+fi
+
 cat "${SCRIPT_DIR}/terraform.tfvars.template" | \
   sed "s/PREFIX/${PREFIX_NAME}/g" | \
   sed "s/RWX_STORAGE/${RWX_STORAGE}/g" | \
@@ -107,7 +134,16 @@ WORKSPACE_DIR=$(cd "${WORKSPACE_DIR}"; pwd -P)
 
 ALL_ARCH="200|210|300|305"
 
-echo "Setting up automation  ${WORKSPACE_DIR}"
+echo "Setting up workspace in ${WORKSPACE_DIR}"
+echo "*****"
+
+mkdir -p "${WORKSPACE_DIR}"
+
+PORTWORX_SPEC_FILE_BASENAME=$(basename "${PORTWORX_SPEC_FILE}")
+
+if [[ -n "${PORTWORX_SPEC_FILE}" ]]; then
+  cp "${PORTWORX_SPEC_FILE}" "${WORKSPACE_DIR}/${PORTWORX_SPEC_FILE_BASENAME}"
+fi
 
 echo ${SCRIPT_DIR}
 
@@ -147,6 +183,9 @@ do
 
   cp -R "${SCRIPT_DIR}/${name}/terraform/"* .
   ln -s "${WORKSPACE_DIR}"/terraform.tfvars ./terraform.tfvars
+  if [[ -n "${PORTWORX_SPEC_FILE_BASENAME}" ]]; then
+    ln -s "${WORKSPACE_DIR}/${PORTWORX_SPEC_FILE_BASENAME}" "./${PORTWORX_SPEC_FILE_BASENAME}"
+  fi
 
   cd - > /dev/null
 done
