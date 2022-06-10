@@ -11,6 +11,7 @@ Usage()
    echo "  -p     Cloud provider (aws, azure, ibm)"
    echo "  -s     Storage (portworx or odf)"
    echo "  -n     (optional) prefix that should be used for all variables"
+   echo "  -x     (optional) Portworx spec file - the name of the file containing the Portworx configuration spec yaml"
    echo "  -h     Print this help"
    echo
 }
@@ -39,6 +40,8 @@ while getopts ":p:s:n:h:" option; do
          STORAGE=$OPTARG;;
       n) # Enter a name
          PREFIX_NAME=$OPTARG;;
+      x) # Enter a name
+         PORTWORX_SPEC_FILE=$OPTARG;;
      \?) # Invalid option
          echo "Error: Invalid option"
          Usage
@@ -49,6 +52,45 @@ done
 SCRIPT_DIR=$(cd $(dirname $0); pwd -P)
 WORKSPACES_DIR="${SCRIPT_DIR}/../workspaces"
 WORKSPACE_DIR="${WORKSPACES_DIR}/current"
+
+
+if [[ -z "${CLOUD_PROVIDER}" ]]; then
+  PS3="Select the cloud provider: "
+
+  select provider in aws azure ibm; do
+    if [[ -n "${provider}" ]]; then
+      CLOUD_PROVIDER="${provider}"
+      break
+    fi
+  done
+
+  echo ""
+fi
+
+if [[ ! "${CLOUD_PROVIDER}" =~ ^aws|azure|ibm ]]; then
+  echo "Invalid value for cloud provider: ${CLOUD_PROVIDER}" >&2
+  exit 1
+fi
+
+if [[ -z "${STORAGE}" ]] && [[ "${CLOUD_PROVIDER}" == "ibm" ]]; then
+  PS3="Select the storage provider: "
+
+  select storage in portworx odf; do
+    if [[ -n "${storage}" ]]; then
+      STORAGE="${storage}"
+      break
+    fi
+  done
+
+  echo ""
+elif [[ -z "${STORAGE}" ]]; then
+  STORAGE="portworx"
+fi
+
+if [[ ! "${STORAGE}" =~ ^odf|portworx ]]; then
+  echo "Invalid value for storage provider: ${STORAGE}" >&2
+  exit 1
+fi
 
 if [[ -n "${PREFIX_NAME}" ]]; then
   PREFIX_NAME="${PREFIX_NAME}-"
