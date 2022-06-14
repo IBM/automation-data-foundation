@@ -171,7 +171,7 @@ elif [[ "${CLOUD_PROVIDER}" == "ibm" ]]; then
   PORTWORX_SPEC_FILE=""
 fi
 
-if [[ -n "${PORTWORX_SPEC_FILE}" ]] && [[ "${PORTWORX_SPEC_FILE}" != "installed" ]] && [[ ! -f "${PORTWORX_SPEC_FILE}" ]]; then
+if [[ -n "${PORTWORX_SPEC_FILE}" ]] && [[ "${PORTWORX_SPEC_FILE}" != "installed" ]] && [[ ! -f "${SCRIPT_DIR}${PORTWORX_SPEC_FILE}" ]]; then
   echo "Portworx spec file not found: ${PORTWORX_SPEC_FILE}" >&2
   exit 1
 fi
