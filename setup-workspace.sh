@@ -175,6 +175,7 @@ cat "${SCRIPT_DIR}/terraform.tfvars.template" | \
   sed "s/RWX_STORAGE/${RWX_STORAGE}/g" | \
   sed "s/RWO_STORAGE/${RWO_STORAGE}/g" | \
   sed "s/STORAGEVENDOR/${STORAGEVENDOR}/g" | \
+  sed "s/PORTWORX_SPEC_FILE/${PORTWORX_SPEC_FILE}/g" | \
   sed "s/CA_CRT_FILE/${CA_CRT_FILE}/g" \
   > "${SCRIPT_DIR}/terraform.tfvars"
 
