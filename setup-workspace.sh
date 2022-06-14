@@ -124,7 +124,7 @@ else
 fi
 
 if [[ "${STORAGE}" == "portworx" ]]; then
-  RWX_STORAGE="portworx-rwx-gp3-sc"
+  RWX_STORAGE="portworx-db2-rwx-sc"
   STORAGEVENDOR="portworx"
 elif [[ "${STORAGE}" == "odf" ]]; then
   RWX_STORAGE="ocs-storagecluster-cephfs"
@@ -171,7 +171,7 @@ elif [[ "${CLOUD_PROVIDER}" == "ibm" ]]; then
   PORTWORX_SPEC_FILE=""
 fi
 
-if [[ -n "${PORTWORX_SPEC_FILE}" ]] && [[ "${PORTWORX_SPEC_FILE}" != "installed" ]] && [[ ! -f "${SCRIPT_DIR}${PORTWORX_SPEC_FILE}" ]]; then
+if [[ -n "${PORTWORX_SPEC_FILE}" ]] && [[ "${PORTWORX_SPEC_FILE}" != "installed" ]] && [[ ! -f "${SCRIPT_DIR}/${PORTWORX_SPEC_FILE}" ]]; then
   echo "Portworx spec file not found: ${PORTWORX_SPEC_FILE}" >&2
   exit 1
 fi
@@ -199,12 +199,13 @@ ln -s "${SCRIPT_DIR}/terraform.tfvars" ./terraform.tfvars
 cp "${SCRIPT_DIR}/apply-all.sh" "${WORKSPACE_DIR}/apply-all.sh"
 cp "${SCRIPT_DIR}/destroy-all.sh" "${WORKSPACE_DIR}/destroy-all.sh"
 
-echo "Setting up workspace from '${TEMPLATE_FLAVOR}' template"
-echo "*****"
-
 WORKSPACE_DIR=$(cd "${WORKSPACE_DIR}"; pwd -P)
 
-ALL_ARCH="200|210|300|305"
+if [[ "${PORTWORX_SPEC_FILE}" == "installed" ]]; then
+  ALL_ARCH="200|300|305"
+else
+  ALL_ARCH="200|210|300|305"
+fi
 
 echo "Setting up workspace in ${WORKSPACE_DIR}"
 echo "*****"
@@ -235,7 +236,7 @@ do
     continue
   fi
 
-  if [[ "${REF_ARCH}" == "all" ]] && [[ ! "${name}" =~ ${ALL_ARCH} ]]; then
+  if [[ ! "${name}" =~ ${ALL_ARCH} ]]; then
     continue
   fi
 
