@@ -206,7 +206,7 @@ A container image is used to provide a consistent runtime environment for the au
     ## Azure credentials
     ## Credentials are required to install Portworx on an Azure account. These credentials must have
     ## particular permissions in order to interact with the account and the OpenShift cluster. Use the
-    ## provided `azure-portworx-credentials.sh` script to retrieve/generate these credentials.
+    ## provided `azure-portworx-credentials.sh` script to retrieve/generate these credentials. Be sure to use the same cluster name that was used to create the cluster on Azure
     ##
     
     ## TF_VAR_azure_subscription_id: The subscription id for the Azure account. This is required if Azure portworx is used
@@ -466,7 +466,7 @@ Please refer to the [Troubleshooting Guide](./TROUBLESHOOTING.md) for uninstalla
 If you continue to experience issues with this automation, please [file an issue](https://github.com/IBM/automation-data-foundation/issues) or reach out on our [public Dischord server](https://discord.com/channels/955514069815808010/955514069815808013).
 
 
-## How to Generate this repository from teh source Bill of Materials.
+## How to Generate this repository from the source Bill of Materials.
 
 
 This set of automation packages was generated using the open-source [`isacable`](https://github.com/cloud-native-toolkit/iascable) tool. This tool enables a [Bill of Material yaml](https://github.com/cloud-native-toolkit/automation-solutions/tree/main/boms/software/cp4d) file to describe your software requirements. If you want up stream releases or versions you can use `iascable` to generate a new terraform module.

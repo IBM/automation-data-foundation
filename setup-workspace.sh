@@ -140,23 +140,38 @@ if [[ -z "${PREFIX_NAME}" ]]; then
 fi
 
 if [[ "${CLOUD_PROVIDER}" =~ aws|azure ]] && [[ -z "${PORTWORX_SPEC_FILE}" ]]; then
-  DEFAULT_FILE=$(find . -name "portworx*.yaml" -maxdepth 1 -exec basename {} \; | head -1)
+  if command -v oc 1> /dev/null 2> /dev/null; then
+    echo "Looking for existing portworx storage class: ${RWX_STORAGE}"
 
-  while [[ -z "${PORTWORX_SPEC_FILE}" ]]; do
-    echo -n "Provide the Portworx config spec file name: [${DEFAULT_FILE}] "
-    read -r PORTWORX_SPEC_FILE
-
-    if [[ -z "${PORTWORX_SPEC_FILE}" ]] && [[ -n "${DEFAULT_FILE}" ]]; then
-      PORTWORX_SPEC_FILE="${DEFAULT_FILE}"
+    if ! oc login "${TF_VAR_server_url}" --token="${TF_VAR_cluster_login_token}" --insecure-skip-tls-verify=true 1> /dev/null; then
+      exit 1
     fi
-  done
 
-  echo ""
+    if oc get storageclass "${RWX_STORAGE}" 1> /dev/null 2> /dev/null; then
+      echo "  Found existing portworx installation. Skipping storage layer..."
+      echo ""
+      PORTWORX_SPEC_FILE="installed"
+    fi
+  fi
+
+  if [[ -z "${PORTWORX_SPEC_FILE}" ]]; then
+    DEFAULT_FILE=$(find . -name "portworx*.yaml" -maxdepth 1 -exec basename {} \; | head -1)
+
+    while [[ -z "${PORTWORX_SPEC_FILE}" ]]; do
+      echo -n "Provide the Portworx config spec file name: [${DEFAULT_FILE}] "
+      read -r PORTWORX_SPEC_FILE
+
+      if [[ -z "${PORTWORX_SPEC_FILE}" ]] && [[ -n "${DEFAULT_FILE}" ]]; then
+        PORTWORX_SPEC_FILE="${DEFAULT_FILE}"
+      fi
+    done
+    echo ""
+  fi
 elif [[ "${CLOUD_PROVIDER}" == "ibm" ]]; then
   PORTWORX_SPEC_FILE=""
 fi
 
-if [[ -n "${PORTWORX_SPEC_FILE}" ]] && [[ ! -f "${SCRIPT_DIR}/${PORTWORX_SPEC_FILE}" ]]; then
+if [[ -n "${PORTWORX_SPEC_FILE}" ]] && [[ "${PORTWORX_SPEC_FILE}" != "installed" ]] && [[ ! -f "${PORTWORX_SPEC_FILE}" ]]; then
   echo "Portworx spec file not found: ${PORTWORX_SPEC_FILE}" >&2
   exit 1
 fi
@@ -198,7 +213,7 @@ mkdir -p "${WORKSPACE_DIR}"
 
 PORTWORX_SPEC_FILE_BASENAME=$(basename "${PORTWORX_SPEC_FILE}")
 
-if [[ -n "${PORTWORX_SPEC_FILE}" ]]; then
+if [[ -n "${PORTWORX_SPEC_FILE}" ]] && [[ "${PORTWORX_SPEC_FILE}" != "installed" ]]; then
   cp "${SCRIPT_DIR}/${PORTWORX_SPEC_FILE}" "${WORKSPACE_DIR}/${PORTWORX_SPEC_FILE_BASENAME}"
 fi
 
