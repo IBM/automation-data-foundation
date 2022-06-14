@@ -12,6 +12,7 @@ Usage()
    echo "  -s     Storage (portworx or odf)"
    echo "  -n     (optional) prefix that should be used for all variables"
    echo "  -x     (optional) Portworx spec file - the name of the file containing the Portworx configuration spec yaml"
+   echo "  -c     (optional) Self-signed Certificate Authority issuer CRT file"
    echo "  -h     Print this help"
    echo
 }
@@ -20,6 +21,7 @@ CLOUD_PROVIDER=""
 STORAGE=""
 PREFIX_NAME=""
 STORAGEVENDOR=""
+CA_CRT_FILE=""
 
 
 
@@ -29,7 +31,7 @@ if [[ "$1" == "-h" ]]; then
 fi
 
 # Get the options
-while getopts ":p:s:n:h:" option; do
+while getopts ":p:s:n:h:x:c:" option; do
    case $option in
       h) # display Help
          Usage
@@ -42,6 +44,8 @@ while getopts ":p:s:n:h:" option; do
          PREFIX_NAME=$OPTARG;;
       x) # Enter a name
          PORTWORX_SPEC_FILE=$OPTARG;;
+      c) # Enter a name
+         CA_CRT_FILE=$OPTARG;;
      \?) # Invalid option
          echo "Error: Invalid option"
          Usage
@@ -152,8 +156,17 @@ elif [[ "${CLOUD_PROVIDER}" == "ibm" ]]; then
   PORTWORX_SPEC_FILE=""
 fi
 
-if [[ -n "${PORTWORX_SPEC_FILE}" ]] && [[ ! -f "${PORTWORX_SPEC_FILE}" ]]; then
+if [[ -n "${PORTWORX_SPEC_FILE}" ]] && [[ ! -f "${SCRIPT_DIR}/${PORTWORX_SPEC_FILE}" ]]; then
   echo "Portworx spec file not found: ${PORTWORX_SPEC_FILE}" >&2
+  exit 1
+fi
+
+if [[ "${CLOUD_PROVIDER}" == "ibm" ]]; then
+  CA_CRT_FILE=""
+fi
+
+if [[ -n "${CA_CRT_FILE}" ]] && [[ ! -f "${SCRIPT_DIR}/${CA_CRT_FILE}" ]]; then
+  echo "CA Issuer CRT file not found: ${CA_CRT_FILE}" >&2
   exit 1
 fi
 
@@ -161,7 +174,8 @@ cat "${SCRIPT_DIR}/terraform.tfvars.template" | \
   sed "s/PREFIX/${PREFIX_NAME}/g" | \
   sed "s/RWX_STORAGE/${RWX_STORAGE}/g" | \
   sed "s/RWO_STORAGE/${RWO_STORAGE}/g" | \
-  sed "s/STORAGEVENDOR/${STORAGEVENDOR}/g" \
+  sed "s/STORAGEVENDOR/${STORAGEVENDOR}/g" | \
+  sed "s/CA_CRT_FILE/${CA_CRT_FILE}/g" \
   > "${SCRIPT_DIR}/terraform.tfvars"
 
 ln -s "${SCRIPT_DIR}/terraform.tfvars" ./terraform.tfvars
@@ -184,7 +198,13 @@ mkdir -p "${WORKSPACE_DIR}"
 PORTWORX_SPEC_FILE_BASENAME=$(basename "${PORTWORX_SPEC_FILE}")
 
 if [[ -n "${PORTWORX_SPEC_FILE}" ]]; then
-  cp "${PORTWORX_SPEC_FILE}" "${WORKSPACE_DIR}/${PORTWORX_SPEC_FILE_BASENAME}"
+  cp "${SCRIPT_DIR}/${PORTWORX_SPEC_FILE}" "${WORKSPACE_DIR}/${PORTWORX_SPEC_FILE_BASENAME}"
+fi
+
+CA_CRT_FILE_BASENAME=$(basename "${CA_CRT_FILE}")
+
+if [[ -n "${CA_CRT_FILE}" ]]; then
+  cp "${SCRIPT_DIR}/${CA_CRT_FILE}" "${WORKSPACE_DIR}/${CA_CRT_FILE_BASENAME}"
 fi
 
 echo ${SCRIPT_DIR}
@@ -227,6 +247,9 @@ do
   ln -s "${WORKSPACE_DIR}"/terraform.tfvars ./terraform.tfvars
   if [[ -n "${PORTWORX_SPEC_FILE_BASENAME}" ]]; then
     ln -s "${WORKSPACE_DIR}/${PORTWORX_SPEC_FILE_BASENAME}" "./${PORTWORX_SPEC_FILE_BASENAME}"
+  fi
+  if [[ -n "${CA_CRT_FILE_BASENAME}" ]]; then
+    ln -s "${WORKSPACE_DIR}/${CA_CRT_FILE_BASENAME}" "./${CA_CRT_FILE_BASENAME}"
   fi
 
   cd - > /dev/null
