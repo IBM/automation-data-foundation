@@ -1,0 +1,9 @@
+digraph {
+    rankdir="BT"
+    "gitops-cp-db2wh (gitops-cp-db2wh)" -> "gitops_repo (gitops-repo)"
+"gitops-cp-db2wh (gitops-cp-db2wh)" -> "gitops-cp-db2wh_namespace (gitops-namespace)"
+"gitops-cp-db2wh (gitops-cp-db2wh)"
+"gitops_repo (gitops-repo)"
+"gitops-cp-db2wh_namespace (gitops-namespace)" -> "gitops_repo (gitops-repo)"
+"gitops-cp-db2wh_namespace (gitops-namespace)"
+  }

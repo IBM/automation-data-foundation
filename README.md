@@ -2,6 +2,7 @@
 
 ### Change Log
 
+- **06/2022** - Support for CP4D Data source services DB2OLTP and DB2Warehouse
 - **06/2022** - Support for Azure
 - **05/2022** - Initial Release
 
@@ -89,8 +90,6 @@ The Data Foundation automation is broken into what we call layers of automation 
 | 210    | [210 - IBM Portworx Storage](./210-ibm-portworx-storage) <br> [210 - IBM OpenShift Data Foundation](./210-ibm-odf-storage)  <br>  [210 - AWS Portworx Storage](./210-aws-portworx-storage)  <br>  [210 - Azure Portworx Storage](./210-azure-portworx-storage) | Use this automation to deploy a storage solution for your cluster.  | 10 Mins  |
 | 300    | [300 - Cloud Pak for Data Entitlement](./300-cloud-pak-for-data-entitlement)                                                                                                                                                                                   | Update the OpenShift Cluster with your entitlement key                                                                                                     | 5 Mins   |
 | 305    | [300 - Cloud Pak for Data Foundation](./305-cloud-pak-for-data-foundation)                                                                                                                                                                                     | Deploy the Cloud Pak for Data Foundation components                                                                                                        | 30 Mins  |
-| 310 | [310 - DB2 Warehouse](./310-cloud-pak-for-data-db2wh) | _(Optional)_ Install DB2 Warehouse service into the cluster | 15 Mins |                                                                    
-
 
 
 > At this time the most reliable way of running this automation is with Terraform in your local machine either through a bootstrapped container image or with native tools installed. We provide a Container image that has all the common SRE tools installed. [CLI Tools Image,](https://quay.io/repository/ibmgaragecloud/cli-tools?tab=tags) [Source Code for CLI Tools](https://github.com/cloud-native-toolkit/image-cli-tools)
@@ -389,7 +388,7 @@ The `gitops-repo_repo`, `gitops-repo_token`, `entitlement_key`, `server_url`, an
 
 21. Navigate into the `/workspaces/current` folder
 
-    > ❗️ Do not skip this step.  You must execute from the `/worksapces/current` folder.
+    > ❗️ Do not skip this step.  You must execute from the `/workspaces/current` folder.
     
 22. Navigate into the `200-openshift-gitops` folder and run the following commands
 
@@ -459,6 +458,11 @@ This concludes the instructions for installing *Data Foundation* on AWS, Azure, 
 
 Now that the Data Foundation deployment is complete you can deploy [Cloud Pak for Data services](https://www.ibm.com/docs/en/cloud-paks/cp-data/4.0?topic=integrations-services) into this cluster.
 
+### Installing Data source services (DB2OLTP / DB2Warehouse)
+
+- ⚠️⚠️⚠️⚠️⚠️⚠️ Pls refer the instructions for [installing DB2 OLTP](README-DB2OLTP.md) on top of CP4D Data foundation
+
+- ⚠️⚠️⚠️⚠️⚠️⚠️ Pls refer the instructions for [installing DB2Warehouse](README-DB2WH.md) on top of CP4D Data foundation
 
 ## Uninstalling & Troubleshooting
 
