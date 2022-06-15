@@ -37,7 +37,7 @@ variable "entitlement_key" {
   type = string
   description = "The entitlement key used to access the CP4I images in the container registry. Visit https://myibm.ibm.com/products-services/containerlibrary to get the key"
 }
-variable "ibm_common_services_namespace_name" {
+variable "ibm_common_services_namespace" {
   type = string
   description = "The value that should be used for the namespace"
   default = "ibm-common-services"
@@ -57,7 +57,7 @@ variable "ibm_common_services_namespace_argocd_namespace" {
   description = "The namespace where argocd has been deployed"
   default = "openshift-gitops"
 }
-variable "cpd_operators_namespace_name" {
+variable "cpd_operators_namespace" {
   type = string
   description = "The value that should be used for the namespace"
   default = "cpd-operators"
@@ -77,7 +77,7 @@ variable "cpd_operators_namespace_argocd_namespace" {
   description = "The namespace where argocd has been deployed"
   default = "openshift-gitops"
 }
-variable "cp4d_namespace_name" {
+variable "cp4d_namespace" {
   type = string
   description = "The value that should be used for the namespace"
   default = "cp4d"

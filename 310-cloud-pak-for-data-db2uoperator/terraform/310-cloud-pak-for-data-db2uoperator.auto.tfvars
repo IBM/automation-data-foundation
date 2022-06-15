@@ -1,3 +1,6 @@
+## cpd_operators_namespace: The namespace where the operators will be installed
+#cpd_operators_namespace="cpd-operators"
+
 ## gitops_repo_host: The host for the git repository.
 #gitops_repo_host=""
 

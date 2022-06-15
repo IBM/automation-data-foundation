@@ -8,6 +8,7 @@ metadata:
   annotations:
     displayName: DB2 Warehouse for Cloud Pak for Data
     description: GitOps deployment of DB2 Warehouse for Cloud pak for Data
+    apply-all/optional: 'true'
 spec:
   modules:
     - name: gitops-cp-db2wh
@@ -15,11 +16,14 @@ spec:
       version: v1.2.1
       variables:
         - name: common_services_namespace
-          value: ibm-common-services
+          alias: ibm_common_services_namespace
+          scope: global
         - name: operator_namespace
-          value: cpd-operators
+          alias: cpd_operators_namespace
+          scope: global
         - name: cpd_namespace
-          value: cp4d
+          alias: cp4d_namespace
+          scope: global
         - name: license
           value: Enterprise
         - name: db2_warehouse_channel
@@ -55,6 +59,18 @@ spec:
       alias: gitops_repo
       version: v1.18.1
   variables:
+    - name: cpd_operators_namespace
+      type: string
+      description: CPD operator namespace
+      defaultValue: cpd-operators
+    - name: cp4d_namespace
+      type: string
+      description: CPD namespace
+      defaultValue: cp4d
+    - name: ibm_common_services_namespace
+      type: string
+      description: Namespace where cpd is deployed
+      defaultValue: ibm-common-services
     - name: gitops_repo_host
       type: string
       description: The host for the git repository.

@@ -18,17 +18,17 @@ variable "gitops-db2-oltp_channel" {
   description = "The channel that should be used to deploy the operator"
   default = "v1.0"
 }
-variable "gitops-db2-oltp_operator_namespace" {
+variable "cpd_operators_namespace" {
   type = string
   description = "CPD operator namespace"
   default = "cpd-operators"
 }
-variable "gitops-db2-oltp_cpd_namespace" {
+variable "cp4d_namespace" {
   type = string
   description = "CPD namespace"
   default = "cp4d"
 }
-variable "gitops-db2-oltp_common_services_namespace" {
+variable "ibm_common_services_namespace" {
   type = string
   description = "IBM Common Services namespace"
   default = "ibm-common-services"

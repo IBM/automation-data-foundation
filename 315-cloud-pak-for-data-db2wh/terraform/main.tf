@@ -24,8 +24,8 @@ module "gitops-cp-db2wh" {
   channel = var.gitops-cp-db2wh_channel
   cluster_ingress_hostname = var.gitops-cp-db2wh_cluster_ingress_hostname
   cluster_type = var.gitops-cp-db2wh_cluster_type
-  common_services_namespace = var.gitops-cp-db2wh_common_services_namespace
-  cpd_namespace = var.gitops-cp-db2wh_cpd_namespace
+  common_services_namespace = var.ibm_common_services_namespace
+  cpd_namespace = var.cp4d_namespace
   db2_warehouse_channel = var.gitops-cp-db2wh_db2_warehouse_channel
   db2_warehouse_version = var.gitops-cp-db2wh_db2_warehouse_version
   git_credentials = module.gitops_repo.git_credentials
@@ -33,7 +33,7 @@ module "gitops-cp-db2wh" {
   kubeseal_cert = module.gitops_repo.sealed_secrets_cert
   license = var.gitops-cp-db2wh_license
   namespace = module.gitops-cp-db2wh_namespace.name
-  operator_namespace = var.gitops-cp-db2wh_operator_namespace
+  operator_namespace = var.cpd_operators_namespace
   server_name = module.gitops_repo.server_name
   storage_class = var.gitops-cp-db2wh_storage_class
   subscription_source_namespace = var.gitops-cp-db2wh_subscription_source_namespace

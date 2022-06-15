@@ -1,6 +1,15 @@
 ## entitlement_key: The entitlement key used to access the CP4I images in the container registry. Visit https://myibm.ibm.com/products-services/containerlibrary to get the key
 #entitlement_key=""
 
+## ibm_common_services_namespace: The value that should be used for the namespace
+#ibm_common_services_namespace="ibm-common-services"
+
+## cpd_operators_namespace: The value that should be used for the namespace
+#cpd_operators_namespace="cpd-operators"
+
+## cp4d_namespace: The value that should be used for the namespace
+#cp4d_namespace="cp4d"
+
 ## gitops_repo_host: The host for the git repository.
 #gitops_repo_host=""
 
