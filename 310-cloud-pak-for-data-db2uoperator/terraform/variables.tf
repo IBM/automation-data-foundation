@@ -8,7 +8,7 @@ variable "gitops-db2u_subscription_source_namespace" {
   description = "The namespace where the catalog has been deployed"
   default = "openshift-marketplace"
 }
-variable "gitops-db2u_operator_namespace" {
+variable "cpd_operators_namespace" {
   type = string
   description = "The namespace where the operators will be installed"
   default = "cpd-operators"
@@ -16,7 +16,7 @@ variable "gitops-db2u_operator_namespace" {
 variable "gitops-db2u_channel" {
   type = string
   description = "The channel that should be used to deploy the operator"
-  default = "v1.0"
+  default = "v1.1"
 }
 variable "gitops-db2u_namespace_name" {
   type = string

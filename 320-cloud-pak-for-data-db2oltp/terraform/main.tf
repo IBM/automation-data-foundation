@@ -34,14 +34,14 @@ module "gitops-db2-oltp" {
 
   channel = var.gitops-db2-oltp_channel
   cluster_name = var.gitops-db2-oltp_cluster_name
-  common_services_namespace = var.gitops-db2-oltp_common_services_namespace
-  cpd_namespace = var.gitops-db2-oltp_cpd_namespace
+  common_services_namespace = var.ibm_common_services_namespace
+  cpd_namespace = var.cp4d_namespace
   git_credentials = module.gitops_repo.git_credentials
   gitops_config = module.gitops_repo.gitops_config
   kubeseal_cert = module.gitops_repo.sealed_secrets_cert
   license = var.gitops-db2-oltp_license
   namespace = module.gitops-cp-db2oltp_namespace.name
-  operator_namespace = var.gitops-db2-oltp_operator_namespace
+  operator_namespace = var.cpd_operators_namespace
   server_name = module.gitops_repo.server_name
   subscription_source_namespace = var.gitops-db2-oltp_subscription_source_namespace
 }

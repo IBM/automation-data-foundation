@@ -6,7 +6,7 @@ module "cp4d_namespace" {
   create_operator_group = var.cp4d_namespace_create_operator_group
   git_credentials = module.gitops_repo.git_credentials
   gitops_config = module.gitops_repo.gitops_config
-  name = var.cp4d_namespace_name
+  name = var.cp4d_namespace
   server_name = module.gitops_repo.server_name
 }
 module "cp4d-instance" {
@@ -32,7 +32,7 @@ module "cpd_operators_namespace" {
   create_operator_group = var.cpd_operators_namespace_create_operator_group
   git_credentials = module.gitops_repo.git_credentials
   gitops_config = module.gitops_repo.gitops_config
-  name = var.cpd_operators_namespace_name
+  name = var.cpd_operators_namespace
   server_name = module.gitops_repo.server_name
 }
 module "gitops_repo" {
@@ -82,6 +82,6 @@ module "ibm_common_services_namespace" {
   create_operator_group = var.ibm_common_services_namespace_create_operator_group
   git_credentials = module.gitops_repo.git_credentials
   gitops_config = module.gitops_repo.gitops_config
-  name = var.ibm_common_services_namespace_name
+  name = var.ibm_common_services_namespace
   server_name = module.gitops_repo.server_name
 }

@@ -8,11 +8,20 @@ metadata:
   annotations:
     displayName: DB2UOperator for Cloud Pak for Data
     description: GitOps deployment of DB2U Operator for Cloud pak for Data
+    apply-all/optional: 'true'
 spec:
   modules:
     - name: gitops-db2u
       alias: gitops-db2u
       version: v1.1.0
+      variables:
+        - name: operator_namespace
+          alias: cpd_operators_namespace
+          scope: global
+        - name: channel
+          value: v1.1
+        - name: subscription_source_namespace
+          value: openshift-marketplace
       dependencies:
         - name: namespace
           ref: gitops-db2u_namespace
@@ -34,16 +43,14 @@ spec:
       variables:
         - name: name
           value: gitops-db2u
-        - name: operator_namespace
-          value: cpd-operators
-        - name: channel
-          value: v1.1
-        - name: subscription_source_namespace
-          value: openshift-marketplace
     - name: gitops-repo
       alias: gitops_repo
       version: v1.18.1
   variables:
+    - name: cpd_operators_namespace
+      type: string
+      description: The namespace where the operators will be installed
+      defaultValue: cpd-operators
     - name: gitops_repo_host
       type: string
       description: The host for the git repository.

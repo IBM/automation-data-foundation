@@ -1,3 +1,12 @@
+## cpd_operators_namespace: CPD operator namespace
+#cpd_operators_namespace="cpd-operators"
+
+## cp4d_namespace: CPD namespace
+#cp4d_namespace="cp4d"
+
+## ibm_common_services_namespace: Namespace where cpd is deployed
+#ibm_common_services_namespace="ibm-common-services"
+
 ## gitops_repo_host: The host for the git repository.
 #gitops_repo_host=""
 

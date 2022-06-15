@@ -25,7 +25,7 @@ module "gitops-db2u" {
   git_credentials = module.gitops_repo.git_credentials
   gitops_config = module.gitops_repo.gitops_config
   kubeseal_cert = module.gitops_repo.sealed_secrets_cert
-  operator_namespace = var.gitops-db2u_operator_namespace
+  operator_namespace = var.cpd_operators_namespace
   server_name = module.gitops_repo.server_name
   subscription_source = var.gitops-db2u_subscription_source
   subscription_source_namespace = var.gitops-db2u_subscription_source_namespace

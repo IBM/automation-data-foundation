@@ -23,17 +23,17 @@ variable "gitops-cp-db2wh_channel" {
   description = "The channel that should be used to deploy the operator"
   default = "v1.0"
 }
-variable "gitops-cp-db2wh_operator_namespace" {
+variable "cpd_operators_namespace" {
   type = string
   description = "CPD operator namespace"
   default = "cpd-operators"
 }
-variable "gitops-cp-db2wh_cpd_namespace" {
+variable "cp4d_namespace" {
   type = string
   description = "CPD namespace"
   default = "cp4d"
 }
-variable "gitops-cp-db2wh_common_services_namespace" {
+variable "ibm_common_services_namespace" {
   type = string
   description = "Namespace where cpd is deployed"
   default = "ibm-common-services"
