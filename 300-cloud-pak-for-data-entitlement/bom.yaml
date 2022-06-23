@@ -8,11 +8,12 @@ metadata:
   annotations:
     displayName: IBM Cloud Pak for Data - Entitlement
     description: GitOps deployment of Entitlement for Cloud pak for Data
+    deployment-type/gitops: 'true'
 spec:
   modules:
     - name: gitops-global-pullsecret-synch
       alias: gitops-global-pullsecret-synch
-      version: v0.1.1
+      version: v0.1.2
       dependencies:
         - name: namespace
           ref: entitlements_namespace
