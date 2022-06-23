@@ -30,7 +30,7 @@ module "gitops_repo" {
   username = var.gitops_repo_username
 }
 module "gitops-global-pullsecret-synch" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-global-pullsecret-synch?ref=v0.1.1"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-global-pullsecret-synch?ref=v0.1.2"
 
   git_credentials = module.gitops_repo.git_credentials
   gitops_config = module.gitops_repo.gitops_config
