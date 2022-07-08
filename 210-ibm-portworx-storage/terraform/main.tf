@@ -19,7 +19,7 @@ module "gitops_repo" {
   username = var.gitops_repo_username
 }
 module "gitops-ibm-portworx" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-ibm-portworx?ref=v0.2.2"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-ibm-portworx?ref=v0.3.0"
 
   capacity = var.gitops-ibm-portworx_capacity
   encryption_key = var.gitops-ibm-portworx_encryption_key
