@@ -5,6 +5,7 @@ variable "ibmcloud_api_key" {
 variable "odf_namespace_name" {
   type = string
   description = "The value that should be used for the namespace"
+  default = "odf"
 }
 variable "odf_namespace_ci" {
   type = bool
@@ -23,7 +24,7 @@ variable "odf_namespace_argocd_namespace" {
 }
 variable "gitops_repo_host" {
   type = string
-  description = "The host for the git repository."
+  description = "The host for the git repository. The git host used can be a GitHub, GitHub Enterprise, Gitlab, Bitbucket, Gitea or Azure DevOps server. If the host is null assumes in-cluster Gitea instance will be used."
   default = ""
 }
 variable "gitops_repo_type" {
@@ -33,7 +34,12 @@ variable "gitops_repo_type" {
 }
 variable "gitops_repo_org" {
   type = string
-  description = "The org/group where the git repository exists/will be provisioned."
+  description = "The org/group where the git repository exists/will be provisioned. If the value is left blank then the username org will be used."
+  default = ""
+}
+variable "gitops_repo_project" {
+  type = string
+  description = "The project that will be used for the git repo. (Primarily used for Azure DevOps repos)"
   default = ""
 }
 variable "gitops_repo_username" {
@@ -48,17 +54,17 @@ variable "gitops_repo_token" {
 }
 variable "gitops_repo_gitea_host" {
   type = string
-  description = "The host for the git repository."
+  description = "The host for the default gitea repository."
   default = ""
 }
 variable "gitops_repo_gitea_org" {
   type = string
-  description = "The org/group where the git repository exists/will be provisioned."
+  description = "The org/group for the default gitea repository. If not provided, the value will default to the username org"
   default = ""
 }
 variable "gitops_repo_gitea_username" {
   type = string
-  description = "The username of the user with access to the repository"
+  description = "The username of the default gitea repository"
   default = ""
 }
 variable "gitops_repo_gitea_token" {
