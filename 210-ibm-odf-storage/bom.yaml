@@ -49,6 +49,8 @@ spec:
       alias: gitea_namespace
       version: v3.2.3
       variables: *ref_0
+    - name: util-clis
+      version: v1.16.9
   variables:
     - name: ibmcloud_api_key
       type: string

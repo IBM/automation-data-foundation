@@ -179,3 +179,13 @@ variable "cluster_ca_cert_file" {
   description = "The path to the file that contains the ca certificate"
   default = ""
 }
+variable "util-clis_bin_dir" {
+  type = string
+  description = "The directory where the clis should be downloaded. If not provided will default to ./bin"
+  default = ""
+}
+variable "util-clis_clis" {
+  type = string
+  description = "The list of clis that should be made available in the bin directory. Supported values are yq, jq, igc, helm, argocd, rosa, gh, glab, and kubeseal. (If not provided the list will default to yq, jq, and igc)"
+  default = "[\"yq\",\"jq\",\"igc\"]"
+}

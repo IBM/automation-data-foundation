@@ -101,7 +101,7 @@ module "toolkit_namespace" {
 }
 module "util-clis" {
   source = "cloud-native-toolkit/clis/util"
-  version = "1.16.8"
+  version = "1.16.9"
 
   bin_dir = var.util-clis_bin_dir
   clis = var.util-clis_clis == null ? null : jsondecode(var.util-clis_clis)

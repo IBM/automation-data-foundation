@@ -1,5 +1,5 @@
 module "cp4d_namespace" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.11.2"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.0"
 
   argocd_namespace = var.cp4d_namespace_argocd_namespace
   ci = var.cp4d_namespace_ci
@@ -25,7 +25,7 @@ module "cp4d-instance" {
   storage_vendor = var.cp4d-instance_storage_vendor
 }
 module "cpd_operators_namespace" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.11.2"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.0"
 
   argocd_namespace = var.cpd_operators_namespace_argocd_namespace
   ci = var.cpd_operators_namespace_ci
@@ -36,9 +36,10 @@ module "cpd_operators_namespace" {
   server_name = module.gitops_repo.server_name
 }
 module "gitops_repo" {
-  source = "github.com/cloud-native-toolkit/terraform-tools-gitops?ref=v1.20.2"
+  source = "github.com/cloud-native-toolkit/terraform-tools-gitops?ref=v1.21.0"
 
   branch = var.gitops_repo_branch
+  debug = var.debug
   gitea_host = var.gitops_repo_gitea_host
   gitea_org = var.gitops_repo_gitea_org
   gitea_token = var.gitops_repo_gitea_token
@@ -76,7 +77,7 @@ module "gitops-cp4d-operator" {
   server_name = module.gitops_repo.server_name
 }
 module "ibm_common_services_namespace" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.11.2"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.0"
 
   argocd_namespace = var.ibm_common_services_namespace_argocd_namespace
   ci = var.ibm_common_services_namespace_ci
@@ -85,4 +86,11 @@ module "ibm_common_services_namespace" {
   gitops_config = module.gitops_repo.gitops_config
   name = var.ibm_common_services_namespace
   server_name = module.gitops_repo.server_name
+}
+module "util-clis" {
+  source = "cloud-native-toolkit/clis/util"
+  version = "1.16.9"
+
+  bin_dir = var.util-clis_bin_dir
+  clis = var.util-clis_clis == null ? null : jsondecode(var.util-clis_clis)
 }

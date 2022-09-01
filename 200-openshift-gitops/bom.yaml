@@ -44,7 +44,7 @@ spec:
     - name: sealed-secret-cert
       version: v1.0.1
     - name: util-clis
-      version: v1.16.8
+      version: v1.16.9
   variables:
     - name: gitops_repo_host
       type: string
