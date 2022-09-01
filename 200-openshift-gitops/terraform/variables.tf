@@ -77,6 +77,11 @@ variable "gitops_repo_strict" {
   description = "Flag indicating that an error should be thrown if the repo already exists"
   default = false
 }
+variable "debug" {
+  type = bool
+  description = "Flag indicating that debug loggging should be enabled"
+  default = false
+}
 variable "argocd-bootstrap_bootstrap_prefix" {
   type = string
   description = "The prefix used in ArgoCD to bootstrap the application"
@@ -203,4 +208,14 @@ variable "sealed-secret-cert_private_key_file" {
   type = string
   description = "The file containin the private key that will be used to encrypt the sealed secrets. If not provided a new private key will be generated"
   default = ""
+}
+variable "util-clis_bin_dir" {
+  type = string
+  description = "The directory where the clis should be downloaded. If not provided will default to ./bin"
+  default = ""
+}
+variable "util-clis_clis" {
+  type = string
+  description = "The list of clis that should be made available in the bin directory. Supported values are yq, jq, igc, helm, argocd, rosa, gh, glab, and kubeseal. (If not provided the list will default to yq, jq, and igc)"
+  default = "[\"yq\",\"jq\",\"igc\"]"
 }
