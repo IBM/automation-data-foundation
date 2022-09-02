@@ -1,7 +1,8 @@
 module "gitops_repo" {
-  source = "github.com/cloud-native-toolkit/terraform-tools-gitops?ref=v1.18.1"
+  source = "github.com/cloud-native-toolkit/terraform-tools-gitops?ref=v1.21.0"
 
   branch = var.gitops_repo_branch
+  debug = var.debug
   gitea_host = var.gitops_repo_gitea_host
   gitea_org = var.gitops_repo_gitea_org
   gitea_token = var.gitops_repo_gitea_token
@@ -9,6 +10,7 @@ module "gitops_repo" {
   gitops_namespace = var.gitops_repo_gitops_namespace
   host = var.gitops_repo_host
   org = var.gitops_repo_org
+  project = var.gitops_repo_project
   public = var.gitops_repo_public
   repo = var.gitops_repo_repo
   sealed_secrets_cert = var.gitops_repo_sealed_secrets_cert
@@ -31,7 +33,7 @@ module "gitops-db2u" {
   subscription_source_namespace = var.gitops-db2u_subscription_source_namespace
 }
 module "gitops-db2u_namespace" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.11.2"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.0"
 
   argocd_namespace = var.gitops-db2u_namespace_argocd_namespace
   ci = var.gitops-db2u_namespace_ci
@@ -40,4 +42,11 @@ module "gitops-db2u_namespace" {
   gitops_config = module.gitops_repo.gitops_config
   name = var.gitops-db2u_namespace_name
   server_name = module.gitops_repo.server_name
+}
+module "util-clis" {
+  source = "cloud-native-toolkit/clis/util"
+  version = "1.16.9"
+
+  bin_dir = var.util-clis_bin_dir
+  clis = var.util-clis_clis == null ? null : jsondecode(var.util-clis_clis)
 }

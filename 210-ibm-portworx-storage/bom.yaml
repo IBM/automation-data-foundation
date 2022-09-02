@@ -50,7 +50,7 @@ spec:
       version: v3.2.3
       variables: *ref_0
     - name: gitops-ibmcloud-operator
-      version: v0.2.1
+      version: v0.2.2
     - name: util-clis
       version: v1.16.9
   variables:

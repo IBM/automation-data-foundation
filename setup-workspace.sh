@@ -261,6 +261,8 @@ do
   cp -R "${SCRIPT_DIR}/${name}/bom.yaml" .
   cp -R "${SCRIPT_DIR}/${name}/terraform/"* .
   ln -s "${WORKSPACE_DIR}"/terraform.tfvars ./terraform.tfvars
+  ln -s "${WORKSPACE_DIR}/apply.sh" ./apply.sh
+  ln -s "${WORKSPACE_DIR}/destroy.sh" ./destroy.sh
   if [[ -n "${PORTWORX_SPEC_FILE_BASENAME}" ]]; then
     ln -s "${WORKSPACE_DIR}/${PORTWORX_SPEC_FILE_BASENAME}" "./${PORTWORX_SPEC_FILE_BASENAME}"
   fi

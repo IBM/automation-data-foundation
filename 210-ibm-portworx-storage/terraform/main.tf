@@ -71,7 +71,7 @@ module "gitops-ibm-portworx" {
   server_name = module.gitops_repo.server_name
 }
 module "gitops-ibmcloud-operator" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-ibmcloud-operator?ref=v0.2.1"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-ibmcloud-operator?ref=v0.2.2"
 
   git_credentials = module.gitops_repo.git_credentials
   gitops_config = module.gitops_repo.gitops_config
