@@ -22,5 +22,4 @@ digraph {
 "gitea_namespace (gitops-namespace)"
 "portworx_namespace (gitops-namespace)" -> "gitops_repo (gitops-repo)"
 "portworx_namespace (gitops-namespace)"
-"util-clis (util-clis)"
   }

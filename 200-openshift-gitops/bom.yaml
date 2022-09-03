@@ -31,7 +31,7 @@ spec:
       version: v1.4.6
     - name: gitops-namespace
       alias: toolkit_namespace
-      version: v1.12.0
+      version: v1.12.1
       default: true
       variables:
         - name: name

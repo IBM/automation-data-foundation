@@ -23,13 +23,13 @@ spec:
       version: v0.3.0
     - name: gitops-namespace
       alias: gitea_namespace
-      version: v1.12.0
+      version: v1.12.1
       variables: &ref_0
         - name: name
           value: gitea
     - name: gitops-namespace
       alias: portworx_namespace
-      version: v1.12.0
+      version: v1.12.1
       default: true
       variables:
         - name: name
@@ -51,8 +51,6 @@ spec:
       variables: *ref_0
     - name: gitops-ibmcloud-operator
       version: v0.2.2
-    - name: util-clis
-      version: v1.16.9
   variables:
     - name: ibmcloud_api_key
       type: string

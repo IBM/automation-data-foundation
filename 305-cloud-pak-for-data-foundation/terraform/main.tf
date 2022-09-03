@@ -1,5 +1,5 @@
 module "cp4d_namespace" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.0"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.1"
 
   argocd_namespace = var.cp4d_namespace_argocd_namespace
   ci = var.cp4d_namespace_ci
@@ -25,7 +25,7 @@ module "cp4d-instance" {
   storage_vendor = var.cp4d-instance_storage_vendor
 }
 module "cpd_operators_namespace" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.0"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.1"
 
   argocd_namespace = var.cpd_operators_namespace_argocd_namespace
   ci = var.cpd_operators_namespace_ci
@@ -77,7 +77,7 @@ module "gitops-cp4d-operator" {
   server_name = module.gitops_repo.server_name
 }
 module "ibm_common_services_namespace" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.0"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.1"
 
   argocd_namespace = var.ibm_common_services_namespace_argocd_namespace
   ci = var.ibm_common_services_namespace_ci
