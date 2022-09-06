@@ -39,21 +39,21 @@ spec:
           optional: true
     - name: gitops-namespace
       alias: ibm_common_services_namespace
-      version: v1.12.1
+      version: v1.12.2
       variables:
         - name: name
           alias: ibm_common_services_namespace
           scope: global
     - name: gitops-namespace
       alias: cpd_operators_namespace
-      version: v1.12.1
+      version: v1.12.2
       variables:
         - name: name
           alias: cpd_operators_namespace
           scope: global
     - name: gitops-namespace
       alias: cp4d_namespace
-      version: v1.12.1
+      version: v1.12.2
       variables:
         - name: name
           alias: cp4d_namespace

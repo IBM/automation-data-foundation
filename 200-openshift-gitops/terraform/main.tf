@@ -63,7 +63,7 @@ module "gitops-cluster-config" {
   server_name = module.gitops_repo.server_name
 }
 module "gitops-console-link-job" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-console-link-job?ref=v1.4.6"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-console-link-job?ref=v1.5.0"
 
   cluster_ingress_hostname = var.gitops-console-link-job_cluster_ingress_hostname
   cluster_type = var.gitops-console-link-job_cluster_type
@@ -89,7 +89,7 @@ module "sealed-secret-cert" {
   private_key_file = var.sealed-secret-cert_private_key_file
 }
 module "toolkit_namespace" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.1"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.2"
 
   argocd_namespace = var.toolkit_namespace_argocd_namespace
   ci = var.toolkit_namespace_ci

@@ -28,10 +28,10 @@ spec:
       version: v1.1.0
     - name: gitops-console-link-job
       alias: gitops-console-link-job
-      version: v1.4.6
+      version: v1.5.0
     - name: gitops-namespace
       alias: toolkit_namespace
-      version: v1.12.1
+      version: v1.12.2
       default: true
       variables:
         - name: name

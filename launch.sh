@@ -37,6 +37,7 @@ then
   fi
 fi
 
+
 DOCKER_IMAGE="quay.io/cloudnativetoolkit/cli-tools:v1.2-v2.2.7"
 #IBM DOCKER_IMAGE="quay.io/cloudnativetoolkit/cli-tools-ibmcloud:v1.2-v0.4.11"
 #AWS DOCKER_IMAGE="quay.io/cloudnativetoolkit/cli-tools-aws:v1.2-v0.3.7"

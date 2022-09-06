@@ -66,7 +66,7 @@ module "gitops-ibm-odf" {
   server_name = module.gitops_repo.server_name
 }
 module "odf_namespace" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.1"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.2"
 
   argocd_namespace = var.odf_namespace_argocd_namespace
   ci = var.odf_namespace_ci

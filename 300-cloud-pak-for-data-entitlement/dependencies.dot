@@ -10,4 +10,5 @@ digraph {
 "gitops-module-global-pullsecret (gitops-module-global-pullsecret)" -> "gitops_repo (gitops-repo)"
 "gitops-module-global-pullsecret (gitops-module-global-pullsecret)" -> "entitlements_namespace (gitops-namespace)"
 "gitops-module-global-pullsecret (gitops-module-global-pullsecret)"
+"util-clis (util-clis)"
   }

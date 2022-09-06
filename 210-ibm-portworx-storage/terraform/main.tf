@@ -56,7 +56,7 @@ module "gitops_repo" {
   username = var.gitops_repo_username
 }
 module "gitops-ibm-portworx" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-ibm-portworx?ref=v0.3.0"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-ibm-portworx?ref=v0.4.0"
 
   capacity = var.gitops-ibm-portworx_capacity
   encryption_key = var.gitops-ibm-portworx_encryption_key
@@ -86,7 +86,7 @@ module "olm" {
   cluster_version = module.cluster.platform.version
 }
 module "portworx_namespace" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.1"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.2"
 
   argocd_namespace = var.portworx_namespace_argocd_namespace
   ci = var.portworx_namespace_ci
@@ -104,4 +104,11 @@ module "resource_group" {
   purge_volumes = var.purge_volumes
   resource_group_name = var.resource_group_name
   sync = var.resource_group_sync
+}
+module "util-clis" {
+  source = "cloud-native-toolkit/clis/util"
+  version = "1.16.9"
+
+  bin_dir = var.util-clis_bin_dir
+  clis = var.util-clis_clis == null ? null : jsondecode(var.util-clis_clis)
 }
