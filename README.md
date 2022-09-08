@@ -322,8 +322,6 @@ You can install these clis on your local machine **OR** run the following comman
 
    You will need to select the cloud provider of your choice, storage option, and if desired, a prefix for naming new resource instances on the Cloud account.  If you are using Azure, you will need a Portworx spec file name (as described above), and if your cluster is using a self-signed SSL certificate, you will need a copy of the issuer cert and the file name.
 
-   > ⚠️ At this time, only IBM Cloud and Azure are supported, but support for AWS will be released in the coming days.
-
 9. Run the command `setup-workspace.sh -p ibm -s portworx -n df` and include optional parameters as needed.
 
     ```
