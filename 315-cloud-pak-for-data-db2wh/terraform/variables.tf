@@ -1,24 +1,24 @@
-variable "gitops-cp-db2wh_cluster_ingress_hostname" {
+variable "gitops-cp-db2wh-service_cluster_ingress_hostname" {
   type = string
   description = "Ingress hostname of the IKS cluster."
   default = ""
 }
-variable "gitops-cp-db2wh_cluster_type" {
+variable "gitops-cp-db2wh-service_cluster_type" {
   type = string
   description = "The cluster type (openshift or ocp3 or ocp4 or kubernetes)"
   default = "ocp4"
 }
-variable "gitops-cp-db2wh_tls_secret_name" {
+variable "gitops-cp-db2wh-service_tls_secret_name" {
   type = string
   description = "The name of the secret containing the tls certificate values"
   default = ""
 }
-variable "gitops-cp-db2wh_subscription_source_namespace" {
+variable "gitops-cp-db2wh-service_subscription_source_namespace" {
   type = string
   description = "The namespace where the catalog has been deployed"
   default = "openshift-marketplace"
 }
-variable "gitops-cp-db2wh_channel" {
+variable "gitops-cp-db2wh-service_channel" {
   type = string
   description = "The channel that should be used to deploy the operator"
   default = "v1.0"
@@ -38,22 +38,22 @@ variable "ibm_common_services_namespace" {
   description = "Namespace where cpd is deployed"
   default = "ibm-common-services"
 }
-variable "gitops-cp-db2wh_storage_class" {
+variable "gitops-cp-db2wh-service_storage_class" {
   type = string
   description = "Storage class for DB2WH instance"
   default = "portworx-shared-gp3"
 }
-variable "gitops-cp-db2wh_db2_warehouse_version" {
+variable "gitops-cp-db2wh-service_db2_warehouse_version" {
   type = string
   description = "DB2 Warehouse version"
   default = "4.0.2"
 }
-variable "gitops-cp-db2wh_db2_warehouse_channel" {
+variable "gitops-cp-db2wh-service_db2_warehouse_channel" {
   type = string
   description = "DB2 Warehouse operator subscription channel"
   default = "v1.0"
 }
-variable "gitops-cp-db2wh_license" {
+variable "gitops-cp-db2wh-service_license" {
   type = string
   description = "License type"
   default = "Enterprise"
@@ -80,7 +80,7 @@ variable "gitops-cp-db2wh_namespace_argocd_namespace" {
 }
 variable "gitops_repo_host" {
   type = string
-  description = "The host for the git repository."
+  description = "The host for the git repository. The git host used can be a GitHub, GitHub Enterprise, Gitlab, Bitbucket, Gitea or Azure DevOps server. If the host is null assumes in-cluster Gitea instance will be used."
   default = ""
 }
 variable "gitops_repo_type" {
@@ -90,7 +90,12 @@ variable "gitops_repo_type" {
 }
 variable "gitops_repo_org" {
   type = string
-  description = "The org/group where the git repository exists/will be provisioned."
+  description = "The org/group where the git repository exists/will be provisioned. If the value is left blank then the username org will be used."
+  default = ""
+}
+variable "gitops_repo_project" {
+  type = string
+  description = "The project that will be used for the git repo. (Primarily used for Azure DevOps repos)"
   default = ""
 }
 variable "gitops_repo_username" {
@@ -105,17 +110,17 @@ variable "gitops_repo_token" {
 }
 variable "gitops_repo_gitea_host" {
   type = string
-  description = "The host for the git repository."
+  description = "The host for the default gitea repository."
   default = ""
 }
 variable "gitops_repo_gitea_org" {
   type = string
-  description = "The org/group where the git repository exists/will be provisioned."
+  description = "The org/group for the default gitea repository. If not provided, the value will default to the username org"
   default = ""
 }
 variable "gitops_repo_gitea_username" {
   type = string
-  description = "The username of the user with access to the repository"
+  description = "The username of the default gitea repository"
   default = ""
 }
 variable "gitops_repo_gitea_token" {
@@ -156,4 +161,19 @@ variable "gitops_repo_strict" {
   type = bool
   description = "Flag indicating that an error should be thrown if the repo already exists"
   default = false
+}
+variable "debug" {
+  type = bool
+  description = "Flag indicating that debug loggging should be enabled"
+  default = false
+}
+variable "util-clis_bin_dir" {
+  type = string
+  description = "The directory where the clis should be downloaded. If not provided will default to ./bin"
+  default = ""
+}
+variable "util-clis_clis" {
+  type = string
+  description = "The list of clis that should be made available in the bin directory. Supported values are yq, jq, igc, helm, argocd, rosa, gh, glab, and kubeseal. (If not provided the list will default to yq, jq, and igc)"
+  default = "[\"yq\",\"jq\",\"igc\"]"
 }

@@ -17,4 +17,5 @@ digraph {
 "gitops-cp-catalogs (gitops-cp-catalogs)"
 "ibm_common_services_namespace (gitops-namespace)" -> "gitops_repo (gitops-repo)"
 "ibm_common_services_namespace (gitops-namespace)"
+"util-clis (util-clis)"
   }
