@@ -86,7 +86,7 @@ module "olm" {
   cluster_version = module.cluster.platform.version
 }
 module "portworx_namespace" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.2"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.3"
 
   argocd_namespace = var.portworx_namespace_argocd_namespace
   ci = var.portworx_namespace_ci

@@ -6,5 +6,4 @@ digraph {
 "gitops_repo (gitops-repo)"
 "gitops-cp-db2oltp_namespace (gitops-namespace)" -> "gitops_repo (gitops-repo)"
 "gitops-cp-db2oltp_namespace (gitops-namespace)"
-"util-clis (util-clis)"
   }
