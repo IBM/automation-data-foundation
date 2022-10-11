@@ -20,13 +20,13 @@ The following pre-requisites need to be met before Deploying IBM Cloud Paks onto
     - For production and targeted MVP, separate worker nodes dedicated to ODF storage cluster is recommended.
 5. Make sure a Default storage classes is defined 
     > ⚠️ CAUTION: If this step is missed, deployment of the Cloud Pak will fail at Postgres or gitea app deployment in creating PVCs.
-    - Make sure this storage class is available ocs-storagecluster-cephfs 
-    - Annotate ocs-storagecluster-cephfs to be default storage class
+    - Make sure this storage class is available `ocs-storagecluster-cephfs` 
+    - Annotate `ocs-storagecluster-cephfs` to be default storage class
     - Go to OCP console from browser, click on storage class and click on annotations (pencil icon)
     - Type in for Key = storageclass.kubernetes.io/is-default-class
     - Type in for Value = true
     - Save
-    - Now in storage classes ocs-storagecluster-cephfs should have Default next to it
+    - Now in storage classes `ocs-storagecluster-cephfs` should have Default next to it
 6. ROKS cluster can be accessed both from IBM Cloud CLI and well as from the browser.
     - ROKS cluster is configured for public access for demo pr PoC purposes
     - Or there is a connection available to private network to access ROKS cluster over private network.

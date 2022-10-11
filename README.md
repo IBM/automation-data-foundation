@@ -378,7 +378,7 @@ The `gitops-repo_repo`, `gitops-repo_token`, `entitlement_key`, `server_url`, an
 
     > ❗️ Do not skip this step.  You must execute from the `/workspaces/current` folder.
 
-    > ⚠️ If you are deploying on IBM Cloud Satellite, you must delete the `/workspaces/current/210-ibm-odf-storage` folder before proceeding to the next step.  ODF will already have been deployed into the Satellite cluster.  For additional detail, please see the [Satellite prerequisites](./IBM_SATELLITE.md).
+    > ⚠️ If you are deploying on IBM Cloud Satellite, you must delete the `/workspaces/current/210-ibm-odf-storage` folder and ensure that `ocs-storagecluster-cephfs` is the default storage class before proceeding to the next step.  ODF will already have been deployed into the Satellite cluster.  For additional detail, please see the [Satellite prerequisites](./IBM_SATELLITE.md).
 
 ##### Automated Deployment
 
