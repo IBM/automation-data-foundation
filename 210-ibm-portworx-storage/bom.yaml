@@ -23,13 +23,13 @@ spec:
       version: v0.4.0
     - name: gitops-namespace
       alias: gitea_namespace
-      version: v1.12.3
+      version: v1.12.2
       variables: &ref_0
         - name: name
           value: gitea
     - name: gitops-namespace
       alias: portworx_namespace
-      version: v1.12.3
+      version: v1.12.2
       default: true
       variables:
         - name: name

@@ -1,5 +1,5 @@
 module "entitlements_namespace" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.3"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-namespace?ref=v1.12.2"
 
   argocd_namespace = var.entitlements_namespace_argocd_namespace
   ci = var.entitlements_namespace_ci
@@ -52,4 +52,11 @@ module "gitops-module-global-pullsecret" {
   namespace = module.entitlements_namespace.name
   secret_name = var.secret_name
   server_name = module.gitops_repo.server_name
+}
+module "util-clis" {
+  source = "cloud-native-toolkit/clis/util"
+  version = "1.16.9"
+
+  bin_dir = var.util-clis_bin_dir
+  clis = var.util-clis_clis == null ? null : jsondecode(var.util-clis_clis)
 }
