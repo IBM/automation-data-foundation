@@ -37,9 +37,8 @@ The following pre-requisites need to be met before Deploying IBM Cloud Paks onto
 IBM Cloud Satellite [Reference architectures](https://ibm-satellite.github.io/academy-labs/#/handbook) are provided for each target infrastructure including AWS, Azure, GCP or on-prem using VMWare. Table below also provides links to instructions on how to create Satellite locations and meet pre-requisite steps specific to target infrastructure.
 NOTE: Instructions below include steps to create Satellite locations using TechZone, but you can use any env to create Satellite location.
 
-
-| Instructions      | AWS | Azure | GCP | On-prem using VMWare |
-| ----------- | ----------- | ----------- | ----------- | ----------- | ----------- |
+| Instructions | AWS | Azure | GCP | On-prem using VMWare |
+| --- | --- | --- | --- | -- |
 | Create Satellite Location and Install Red Hat OpenShift on IBM Cloud | [AWS](https://ibm-satellite.github.io/academy-labs/#/aws/aws-prework) | [Azure](https://ibm-satellite.github.io/academy-labs/#/azure/azure-prework) | TBD | [VMWare on-prem](https://ibm-satellite.github.io/academy-labs/#/vmware/vmware-prework) |
 | Review status of Satellite location and cluster | [common](https://ibm-satellite.github.io/academy-labs/#/common/healthstatus/readme) | [common](https://ibm-satellite.github.io/academy-labs/#/common/healthstatus/readme) |  | [common](https://ibm-satellite.github.io/academy-labs/#/common/healthstatus/readme) |
 | Expose OpenShift Cluster to public internet | [link](https://ibm-satellite.github.io/academy-labs/#/aws/aws-access-roks-inet) | [link](https://ibm-satellite.github.io/academy-labs/#/aws/aws-access-roks-inet) | TBD | N/A (Private Only) |
