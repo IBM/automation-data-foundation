@@ -1,3 +1,18 @@
+## gitops_default_host: the value of gitops_default_host
+#gitops_default_host=""
+
+## gitops_default_org: the value of gitops_default_org
+#gitops_default_org=""
+
+## gitops_default_username: the value of gitops_default_username
+#gitops_default_username=""
+
+## gitops_default_token: the value of gitops_default_token
+#gitops_default_token=""
+
+## gitops_default_ca_cert: the value of gitops_default_ca_cert
+#gitops_default_ca_cert=""
+
 ## entitlement_key: The entitlement key used to access the CP4I images in the container registry. Visit https://myibm.ibm.com/products-services/containerlibrary to get the key
 #entitlement_key=""
 

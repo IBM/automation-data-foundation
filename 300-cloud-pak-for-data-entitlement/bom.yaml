@@ -13,13 +13,13 @@ spec:
   modules:
     - name: gitops-global-pullsecret-synch
       alias: gitops-global-pullsecret-synch
-      version: v0.1.2
+      version: v0.1.3
       dependencies:
         - name: namespace
           ref: entitlements_namespace
     - name: gitops-module-global-pullsecret
       alias: gitops-module-global-pullsecret
-      version: v0.0.1
+      version: v0.0.2
       dependencies:
         - name: namespace
           ref: entitlements_namespace
@@ -38,16 +38,27 @@ spec:
           scope: global
     - name: gitops-namespace
       alias: entitlements_namespace
-      version: v1.12.2
+      version: v1.14.0
       variables:
         - name: name
           value: entitlements
     - name: gitops-repo
       alias: gitops_repo
-      version: v1.21.0
+      version: v1.23.1
     - name: util-clis
-      version: v1.16.9
+      version: v1.18.1
   variables:
+    - name: gitops_default_host
+      type: string
+    - name: gitops_default_org
+      type: string
+    - name: gitops_default_username
+      type: string
+    - name: gitops_default_token
+      type: string
+      sensitive: true
+    - name: gitops_default_ca_cert
+      type: string
     - name: entitlement_key
       type: string
       description: The password for the container registry

@@ -13,7 +13,7 @@ spec:
   modules:
     - name: cp4d-instance
       alias: cp4d-instance
-      version: v1.0.6
+      version: v1.0.7
       dependencies:
         - name: namespace
           ref: cp4d_namespace
@@ -22,7 +22,7 @@ spec:
           value: portworx
     - name: gitops-cp-catalogs
       alias: gitops-cp-catalogs
-      version: v1.2.4
+      version: v1.2.6
       dependencies:
         - name: namespace
           ref: ibm_common_services_namespace
@@ -31,7 +31,7 @@ spec:
           scope: global
     - name: gitops-cp4d-operator
       alias: gitops-cp4d-operator
-      version: v1.0.0
+      version: v1.0.1
       dependencies:
         - name: namespace
           ref: cpd_operators_namespace
@@ -39,31 +39,42 @@ spec:
           optional: true
     - name: gitops-namespace
       alias: ibm_common_services_namespace
-      version: v1.12.2
+      version: v1.14.0
       variables:
         - name: name
           alias: ibm_common_services_namespace
           scope: global
     - name: gitops-namespace
       alias: cpd_operators_namespace
-      version: v1.12.2
+      version: v1.14.0
       variables:
         - name: name
           alias: cpd_operators_namespace
           scope: global
     - name: gitops-namespace
       alias: cp4d_namespace
-      version: v1.12.2
+      version: v1.14.0
       variables:
         - name: name
           alias: cp4d_namespace
           scope: global
     - name: gitops-repo
       alias: gitops_repo
-      version: v1.21.0
+      version: v1.23.1
     - name: util-clis
-      version: v1.16.9
+      version: v1.18.1
   variables:
+    - name: gitops_default_host
+      type: string
+    - name: gitops_default_org
+      type: string
+    - name: gitops_default_username
+      type: string
+    - name: gitops_default_token
+      type: string
+      sensitive: true
+    - name: gitops_default_ca_cert
+      type: string
     - name: entitlement_key
       type: string
       description: >-

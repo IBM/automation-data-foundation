@@ -2,4 +2,6 @@
 provider "azure" {
 
 
+
+
 }

@@ -1,46 +1,171 @@
-variable "gitea_instance_name" {
-  type = string
-  description = "The name for the instance"
-  default = "gitea"
-}
-variable "gitea_username" {
-  type = string
-  description = "The username for the instance"
-  default = "gitea-admin"
-}
-variable "gitea_password" {
-  type = string
-  description = "The password for the instance"
-  default = ""
-}
-variable "gitea_ca_cert_file" {
-  type = string
-  description = "The path to the file that contains the ca certificate"
-  default = ""
-}
 variable "ibmcloud_api_key" {
   type = string
   description = "The api key for IBM Cloud access"
 }
-variable "gitea_namespace_name" {
+variable "gitops-ibm-odf_osdStorageClassName" {
   type = string
-  description = "The value that should be used for the namespace"
-  default = "gitea"
+  description = "Storage class that you want to use for your OSD devices"
+  default = "ibmc-vpc-block-metro-10iops-tier"
 }
-variable "gitea_namespace_ci" {
-  type = bool
-  description = "Flag indicating that this namespace will be used for development (e.g. configmaps and secrets)"
-  default = false
-}
-variable "gitea_namespace_create_operator_group" {
-  type = bool
-  description = "Flag indicating that an operator group should be created in the namespace"
-  default = true
-}
-variable "gitea_namespace_argocd_namespace" {
+variable "gitops-ibm-odf_osdDevicePaths" {
   type = string
-  description = "The namespace where argocd has been deployed"
-  default = "openshift-gitops"
+  description = "Please provide IDs of the disks to be used for OSD pods if using local disks or standard classic cluster"
+  default = ""
+}
+variable "gitops-ibm-odf_osdSize" {
+  type = string
+  description = "Size of your storage devices. The total storage capacity of your ODF cluster is equivalent to the osdSize x 3 divided by the numOfOsd."
+  default = "250Gi"
+}
+variable "gitops-ibm-odf_numOfOsd" {
+  type = string
+  description = "Number object storage daemons (OSDs) that you want to create. ODF creates three times the numOfOsd value."
+  default = "1"
+}
+variable "gitops-ibm-odf_billingType" {
+  type = string
+  description = "Billing Type for your ODF deployment (`essentials` or `advanced`)."
+  default = "advanced"
+}
+variable "gitops-ibm-odf_ocsUpgrade" {
+  type = string
+  description = "Whether to upgrade the major version of your ODF deployment."
+  default = "false"
+}
+variable "gitops-ibm-odf_clusterEncryption" {
+  type = string
+  description = "Enable encryption of storage cluster"
+  default = "false"
+}
+variable "gitops-ibm-odf_workerNodes" {
+  type = string
+  description = "Install on which worker nodes"
+  default = "all"
+}
+variable "gitops-ibm-odf_monSize" {
+  type = string
+  description = "Size of the storage devices that you want to provision for the monitor pods. The devices must be at least 20Gi each"
+  default = "20Gi"
+}
+variable "gitops-ibm-odf_monStorageClassName" {
+  type = string
+  description = "Storage class to use for your Monitor pods. For VPC clusters you must specify a block storage class"
+  default = "ibmc-vpc-block-metro-10iops-tier"
+}
+variable "gitops-ibm-odf_monDevicePaths" {
+  type = string
+  description = "Please provide IDs of the disks to be used for mon pods if using local disks or standard classic cluster"
+  default = ""
+}
+variable "gitops-ibm-odf_autoDiscoverDevices" {
+  type = string
+  description = "Auto Discover Devices"
+  default = "false"
+}
+variable "gitops-ibm-odf_hpcsEncryption" {
+  type = string
+  description = "Use Hyper Protect Crypto Services"
+  default = "false"
+}
+variable "gitops-ibm-odf_hpcsServiceName" {
+  type = string
+  description = "Enter the name of your Hyper Protect Crypto Services instance. For example: Hyper-Protect-Crypto-Services-eugb"
+  default = "false"
+}
+variable "gitops-ibm-odf_hpcsInstanceId" {
+  type = string
+  description = "Enter your Hyper Protect Crypto Services instance ID. For example: d11a1a43-aa0a-40a3-aaa9-5aaa63147aaa"
+  default = "false"
+}
+variable "gitops-ibm-odf_hpcsSecretName" {
+  type = string
+  description = "Enter the name of the secret that you created by using your Hyper Protect Crypto Services credentials. For example: ibm-hpcs-secret"
+  default = "false"
+}
+variable "gitops-ibm-odf_hpcsBaseUrl" {
+  type = string
+  description = "Enter the public endpoint of your Hyper Protect Crypto Services instance. For example: https://api.eu-gb.hs-crypto.cloud.ibm.com:8389"
+  default = "false"
+}
+variable "gitops-ibm-odf_hpcsTokenUrl" {
+  type = string
+  description = "Enter https://iam.cloud.ibm.com/oidc/token"
+  default = "false"
+}
+variable "gitops_default_host" {
+  type = string
+  description = "the value of gitops_default_host"
+  default = ""
+}
+variable "gitops_default_org" {
+  type = string
+  description = "the value of gitops_default_org"
+  default = ""
+}
+variable "gitops_default_username" {
+  type = string
+  description = "the value of gitops_default_username"
+  default = ""
+}
+variable "gitops_default_token" {
+  type = string
+  description = "the value of gitops_default_token"
+  default = ""
+}
+variable "gitops_default_ca_cert" {
+  type = string
+  description = "the value of gitops_default_ca_cert"
+  default = ""
+}
+variable "gitops_host" {
+  type = string
+  description = "The host name of the gitops repository (GitHub, Github Enterprise, Gitlab, Bitbucket, Azure DevOps, and Gitea servers are supported)."
+  default = ""
+}
+variable "gitops_org" {
+  type = string
+  description = "The organization on the git server where the repsitory will be located. If not provided the org will default to the username."
+  default = ""
+}
+variable "gitops_project" {
+  type = string
+  description = "The Azure DevOps project in the git server. This value is only applied for Azure DevOps servers."
+  default = ""
+}
+variable "gitops_repo" {
+  type = string
+  description = "The name of the repository in the org on the git server."
+  default = ""
+}
+variable "gitops_username" {
+  type = string
+  description = "The username used to access the git server."
+  default = ""
+}
+variable "gitops_token" {
+  type = string
+  description = "The token used to access the git server."
+  default = ""
+}
+variable "gitops_branch" {
+  type = string
+  description = "The name of the branch in the gitops repository where the config will be stored."
+  default = "main"
+}
+variable "gitops_server_name" {
+  type = string
+  description = "The name of the server the configuration with which the configuration will be associated."
+  default = "default"
+}
+variable "gitops_ca_cert" {
+  type = string
+  description = "The ca certificate used to sign the self-signed certificate used by the git server, if applicable."
+  default = ""
+}
+variable "gitops_ca_cert_file" {
+  type = string
+  description = "The file containing the ca certificate used to sign the self-signed certificate used by the git server, if applicable."
+  default = ""
 }
 variable "odf_namespace_name" {
   type = string
@@ -92,6 +217,26 @@ variable "gitops_repo_token" {
   description = "The personal access token used to access the repository"
   default = ""
 }
+variable "gitops_repo_gitea_host" {
+  type = string
+  description = "The host for the default gitea repository."
+  default = ""
+}
+variable "gitops_repo_gitea_org" {
+  type = string
+  description = "The org/group for the default gitea repository. If not provided, the value will default to the username org"
+  default = ""
+}
+variable "gitops_repo_gitea_username" {
+  type = string
+  description = "The username of the default gitea repository"
+  default = ""
+}
+variable "gitops_repo_gitea_token" {
+  type = string
+  description = "The personal access token used to access the repository"
+  default = ""
+}
 variable "gitops_repo_repo" {
   type = string
   description = "The short name of the repository (i.e. the part after the org/group name)"
@@ -130,54 +275,6 @@ variable "debug" {
   type = bool
   description = "Flag indicating that debug loggging should be enabled"
   default = false
-}
-variable "server_url" {
-  type = string
-  description = "The url for the OpenShift api"
-}
-variable "cluster_login_user" {
-  type = string
-  description = "Username for login"
-  default = ""
-}
-variable "cluster_login_password" {
-  type = string
-  description = "Password for login"
-  default = ""
-}
-variable "cluster_login_token" {
-  type = string
-  description = "Token used for authentication"
-}
-variable "cluster_skip" {
-  type = bool
-  description = "Flag indicating that the cluster login has already been performed"
-  default = false
-}
-variable "cluster_cluster_version" {
-  type = string
-  description = "[Deprecated] The version of the cluster (passed through to the output)"
-  default = ""
-}
-variable "cluster_ingress_subdomain" {
-  type = string
-  description = "[Deprecated] The ingress subdomain of the cluster (passed through to the output)"
-  default = ""
-}
-variable "cluster_tls_secret_name" {
-  type = string
-  description = "[Deprecated] The name of the secret containing the tls certificates for the ingress subdomain (passed through to the output)"
-  default = ""
-}
-variable "cluster_ca_cert" {
-  type = string
-  description = "The base64 encoded ca certificate"
-  default = ""
-}
-variable "cluster_ca_cert_file" {
-  type = string
-  description = "The path to the file that contains the ca certificate"
-  default = ""
 }
 variable "util-clis_bin_dir" {
   type = string

@@ -1,2 +1,4 @@
 credentials.properties
 terraform.tfvars
+cluster.tfvars
+gitops.tfvars
