@@ -1,3 +1,18 @@
+## gitops_default_host: the value of gitops_default_host
+#gitops_default_host=""
+
+## gitops_default_org: the value of gitops_default_org
+#gitops_default_org=""
+
+## gitops_default_username: the value of gitops_default_username
+#gitops_default_username=""
+
+## gitops_default_token: the value of gitops_default_token
+#gitops_default_token=""
+
+## gitops_default_ca_cert: the value of gitops_default_ca_cert
+#gitops_default_ca_cert=""
+
 ## entitlement_key: The password for the container registry
 #entitlement_key=""
 

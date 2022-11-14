@@ -1,6 +1,21 @@
 ## ibmcloud_api_key: The api key for the IBM Cloud account
 #ibmcloud_api_key=""
 
+## gitops_default_host: the value of gitops_default_host
+#gitops_default_host=""
+
+## gitops_default_org: the value of gitops_default_org
+#gitops_default_org=""
+
+## gitops_default_username: the value of gitops_default_username
+#gitops_default_username=""
+
+## gitops_default_token: the value of gitops_default_token
+#gitops_default_token=""
+
+## gitops_default_ca_cert: the value of gitops_default_ca_cert
+#gitops_default_ca_cert=""
+
 ## gitops_repo_host: The host for the git repository. The git host used can be a GitHub, GitHub Enterprise, Gitlab, Bitbucket, Gitea or Azure DevOps server. If the host is null assumes in-cluster Gitea instance will be used.
 #gitops_repo_host=""
 
@@ -21,10 +36,4 @@
 
 ## resource_group_name: The name of the resource group
 #resource_group_name=""
-
-## server_url: The url for the OpenShift api
-#server_url=""
-
-## cluster_login_token: Token used for authentication
-#cluster_login_token=""
 
