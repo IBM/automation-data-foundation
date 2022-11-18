@@ -347,11 +347,11 @@ You can install these clis on your local machine **OR** run the following comman
 
     > ⚠️ If you are deploying on IBM Cloud Satellite, choose the `odf` storage option when running `setup-workspace.sh`.
    
-10. The default `terraform.tfvars` file is symbolically linked to the new `workspaces/current` folder so this enables you to edit the file in your native operating system using your editor of choice.
+10. The default `cluster.tfvars` and `gitops.tfvar` files are symbolically linked to the new `workspaces/current` folder so this enables you to edit the file in your native operating system using your editor of choice.
 
-12. Edit the default `terraform.tfvars` file this will enable you to setup the GitOps parameters.
+12. Edit the default `gitops.tfvars` file this will enable you to setup the GitOps parameters.
 
-The following you will be prompted for and some suggested values.
+The following you will be prompted for and some suggested values.  If you would like to use GitHub for your GitOps repo, then you will need to populate these values. Add your GitHub username and your Personal Access Token to `TF_VAR_gitops_repo_username` and `TF_VAR_gitops_repo_token`.  If these values are left blank, the automation will deploy Gitea into the OpenShift cluster for the GitOps deployment, requiring no additional user interaction.
 
 | Variable      | Description                                               | Suggested Value                                       |
 | -----------   |-----------------------------------------------------------|-------------------------------------------------------
