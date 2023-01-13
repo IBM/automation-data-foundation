@@ -1,0 +1,178 @@
+variables:
+  - name: deployer_storage_class
+    type: string
+    description: Storage class to be used by the cloud pak deployer
+    value: ocs-storagecluster-cephfs
+  - name: cluster_name
+    type: string
+    description: The cluster name where the cloud pak deployer will be deployed
+    value: cloud-pak-for-data
+  - name: cluster_ingress
+    type: string
+    description: The ingress subdomain for the cluster
+  - name: cpd_version
+    type: string
+    description: The CP4D version to deploy.
+    value: 4.6.0
+  - name: entitlement_key
+    type: string
+    description: The Cloud Pak entitlement key
+  - name: install_scheduler
+    type: bool
+    description: Install scheduler cartridge
+    value: false
+  - name: install_analyticsengine
+    type: bool
+    description: Install analyticsengine cartridge
+    value: false
+  - name: install_bigsql
+    type: bool
+    description: Install bigsql cartridge
+    value: false
+  - name: install_ca
+    type: bool
+    description: Install ca cartridge
+    value: false
+  - name: install_cde
+    type: bool
+    description: Install cde cartridge
+    value: false
+  - name: install_datagate
+    type: bool
+    description: Install datagate cartridge
+    value: false
+  - name: install_datastage-ent-plus
+    type: bool
+    description: Install datastage-ent-plus cartridge
+    value: false
+  - name: install_db2
+    type: bool
+    description: Install db2 cartridge
+    value: false
+  - name: install_db2u
+    type: bool
+    description: Install db2u cartridge
+    value: false
+  - name: install_db2wh
+    type: bool
+    description: Install db2wh cartridge
+    value: false
+  - name: install_dmc
+    type: bool
+    description: Install dmc cartridge
+    value: false
+  - name: install_dods
+    type: bool
+    description: Install dods cartridge
+    value: false
+  - name: install_dp
+    type: bool
+    description: Install dp cartridge
+    value: false
+  - name: install_dv
+    type: bool
+    description: Install dv cartridge
+    value: false
+  - name: install_hadoop
+    type: bool
+    description: Install hadoop cartridge
+    value: false
+  - name: install_mdm
+    type: bool
+    description: Install mdm cartridge
+    value: false
+  - name: install_openpages
+    type: bool
+    description: Install openpages cartridge
+    value: false
+  - name: install_planning-analytics
+    type: bool
+    description: Install planning-analytics cartridge
+    value: false
+  - name: install_rstudio
+    type: bool
+    description: Install rstudio cartridge
+    value: false
+  - name: install_spss
+    type: bool
+    description: Install spss cartridge
+    value: false
+  - name: install_voice-gateway
+    type: bool
+    description: Install voice-gateway cartridge
+    value: false
+  - name: install_watson-assistant
+    type: bool
+    description: Install watson-assistant cartridge
+    value: false
+  - name: install_watson-discovery
+    type: bool
+    description: Install watson-discovery cartridge
+    value: false
+  - name: install_watson-ks
+    type: bool
+    description: Install watson-ks cartridge
+    value: false
+  - name: install_watson-openscale
+    type: bool
+    description: Install watson-openscale cartridge
+    value: false
+  - name: install_watson-speech
+    type: bool
+    description: Install watson-speech cartridge
+    value: false
+  - name: install_wkc
+    type: bool
+    description: Install wkc cartridge
+    value: false
+  - name: install_wml
+    type: bool
+    description: Install wml cartridge
+    value: false
+  - name: install_wml-accelerator
+    type: bool
+    description: Install wml-accelerator cartridge
+    value: false
+  - name: install_wsl
+    type: bool
+    description: Install wsl cartridge
+    value: false
+  - name: cloud_pak_deployer_namespace
+    type: string
+    description: The value that should be used for the namespace
+    value: cloud-pak-deployer
+  - name: cpd_instance_namespace
+    type: string
+    description: The value that should be used for the namespace
+    value: cpd-instance
+  - name: gitops_repo_host
+    type: string
+    description: >-
+      The host for the git repository. The git host used can be a GitHub, GitHub
+      Enterprise, Gitlab, Bitbucket, Gitea or Azure DevOps server. If the host
+      is null assumes in-cluster Gitea instance will be used.
+    value: ''
+  - name: gitops_repo_org
+    type: string
+    description: >-
+      The org/group where the git repository exists/will be provisioned. If the
+      value is left blank then the username org will be used.
+    value: ''
+  - name: gitops_repo_project
+    type: string
+    description: >-
+      The project that will be used for the git repo. (Primarily used for Azure
+      DevOps repos)
+    value: ''
+  - name: gitops_repo_username
+    type: string
+    description: The username of the user with access to the repository
+    value: ''
+  - name: gitops_repo_token
+    type: string
+    description: The personal access token used to access the repository
+    value: ''
+    sensitive: true
+  - name: gitops_repo_repo
+    type: string
+    description: The short name of the repository (i.e. the part after the org/group name)
