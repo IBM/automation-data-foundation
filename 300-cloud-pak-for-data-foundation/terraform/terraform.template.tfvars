@@ -8,7 +8,7 @@
 #cluster_ingress=""
 
 ## cpd_version: The CP4D version to deploy.
-#cpd_version="4.6.0"
+#cpd_version="4.5.0"
 
 ## entitlement_key: The Cloud Pak entitlement key
 #entitlement_key=""

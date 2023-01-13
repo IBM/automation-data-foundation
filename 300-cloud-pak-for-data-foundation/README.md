@@ -70,7 +70,7 @@ already be in .gitignore.
 | deployer_storage_class | Storage class to be used by the cloud pak deployer |  | ocs-storagecluster-cephfs |
 | cluster_name | The cluster name where the cloud pak deployer will be deployed |  | cloud-pak-for-data |
 | cluster_ingress | The ingress subdomain for the cluster |  |  |
-| cpd_version | The CP4D version to deploy. |  | 4.6.0 |
+| cpd_version | The CP4D version to deploy. |  | 4.5.0 |
 | entitlement_key | The Cloud Pak entitlement key |  |  |
 | install_scheduler | Install scheduler cartridge |  | false |
 | install_analyticsengine | Install analyticsengine cartridge |  | false |

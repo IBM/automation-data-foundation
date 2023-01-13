@@ -88,7 +88,7 @@ module "gitops-cp4d-deployer" {
 | instance_namespace | The namespace where the cloud pak deployer instance will be deployed | false | cpd-instance |  |
 | cluster_name | The cluster name where the cloud pak deployer will be deployed | true |  |  |
 | cluster_ingress | The ingress subdomain for the cluster | true |  |  |
-| cpd_version | The CP4D version to deploy. | false | 4.6.0 |  |
+| cpd_version | The CP4D version to deploy. | false | 4.5.0 |  |
 | entitlement_key | The Cloud Pak entitlement key | true |  |  |
 | install_scheduler | Install scheduler cartridge | true |  |  |
 | install_analyticsengine | Install analyticsengine cartridge | true |  |  |

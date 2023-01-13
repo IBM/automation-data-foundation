@@ -13,7 +13,7 @@ variables:
   - name: cpd_version
     type: string
     description: The CP4D version to deploy.
-    value: 4.6.0
+    value: 4.5.0
   - name: entitlement_key
     type: string
     description: The Cloud Pak entitlement key
