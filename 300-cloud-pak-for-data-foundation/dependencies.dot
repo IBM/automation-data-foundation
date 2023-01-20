@@ -1,0 +1,12 @@
+digraph {
+    rankdir="BT"
+    "gitops-cp4d-deployer (gitops-cp4d-deployer)" -> "gitops_repo (gitops-repo)"
+"gitops-cp4d-deployer (gitops-cp4d-deployer)" -> "cloud_pak_deployer_namespace (gitops-namespace)"
+"gitops-cp4d-deployer (gitops-cp4d-deployer)"
+"gitops_repo (gitops-repo)"
+"cloud_pak_deployer_namespace (gitops-namespace)" -> "gitops_repo (gitops-repo)"
+"cloud_pak_deployer_namespace (gitops-namespace)"
+"cpd_instance_namespace (gitops-namespace)" -> "gitops_repo (gitops-repo)"
+"cpd_instance_namespace (gitops-namespace)"
+"util-clis (util-clis)"
+  }

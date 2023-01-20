@@ -1,11 +1,12 @@
 module "argocd-bootstrap" {
-  source = "github.com/cloud-native-toolkit/terraform-tools-argocd-bootstrap?ref=v1.12.0"
+  source = "github.com/cloud-native-toolkit/terraform-tools-argocd-bootstrap?ref=v1.13.0"
 
   bootstrap_path = module.gitops_repo.bootstrap_path
   bootstrap_prefix = var.argocd-bootstrap_bootstrap_prefix
   cluster_config_file = module.cluster.config_file_path
   cluster_type = module.cluster.platform.type_code
   create_webhook = var.argocd-bootstrap_create_webhook
+  git_ca_cert = module.gitops_repo.config_ca_cert
   git_token = module.gitops_repo.config_token
   git_username = module.gitops_repo.config_username
   gitops_repo_url = module.gitops_repo.config_repo_url
@@ -41,7 +42,7 @@ module "config" {
   server_name = module.gitops_repo.server_name
 }
 module "gitea" {
-  source = "github.com/cloud-native-toolkit/terraform-tools-gitea?ref=v0.5.0"
+  source = "github.com/cloud-native-toolkit/terraform-tools-gitea?ref=v0.5.1"
 
   ca_cert = module.cluster.ca_cert
   ca_cert_file = var.gitea_ca_cert_file
@@ -62,7 +63,7 @@ module "gitea_namespace" {
   name = var.gitea_namespace_name
 }
 module "gitops_repo" {
-  source = "github.com/cloud-native-toolkit/terraform-tools-gitops?ref=v1.23.1"
+  source = "github.com/cloud-native-toolkit/terraform-tools-gitops?ref=v1.23.3"
 
   branch = var.gitops_repo_branch
   debug = var.debug
@@ -122,7 +123,7 @@ module "toolkit_namespace" {
 }
 module "util-clis" {
   source = "cloud-native-toolkit/clis/util"
-  version = "1.18.1"
+  version = "1.18.2"
 
   bin_dir = var.util-clis_bin_dir
   clis = var.util-clis_clis == null ? null : jsondecode(var.util-clis_clis)

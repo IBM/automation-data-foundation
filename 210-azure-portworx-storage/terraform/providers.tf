@@ -1,7 +1,0 @@
-
-provider "azure" {
-
-
-
-
-}
