@@ -35,6 +35,7 @@ module "argocd-bootstrap" {
   cluster_config_file = module.cluster.config_file_path
   cluster_type = module.cluster.platform.type_code
   create_webhook = var.argocd-bootstrap_create_webhook
+  git_ca_cert = module.gitops_repo.config_ca_cert
   git_token = module.gitops_repo.config_token
   git_username = module.gitops_repo.config_username
   gitops_repo_url = module.gitops_repo.config_repo_url
@@ -61,6 +62,7 @@ module "argocd-bootstrap" {
 | gitops_repo_url | The GitOps repo url | true |  | gitops.config_repo_url |
 | git_username | The username used to access the GitOps repo | true |  | gitops.config_username |
 | git_token | The token used to access the GitOps repo | true |  | gitops.config_token |
+| git_ca_cert | Base64 encoded ca cert of the gitops repository | true |  | gitops.config_ca_cert |
 | bootstrap_path | The path to the bootstrap config for ArgoCD | true |  | gitops.bootstrap_path |
 | sealed_secret_cert | The certificate that will be used to encrypt sealed secrets. If not provided, a new one will be generated | true |  | cert.cert |
 | sealed_secret_private_key | The private key that will be used to decrypt sealed secrets. If not provided, a new one will be generated | true |  | cert.private_key |

@@ -63,7 +63,7 @@ already be in .gitignore.
 | [gitops-console-link-job](https://github.com/cloud-native-toolkit/terraform-gitops-console-link-job) | Module that populates a gitops repository with the Console Link Cronjob chart from https://charts. | v1.5.1 |
 | [gitops-namespace](https://github.com/cloud-native-toolkit/terraform-gitops-namespace) | Module to configure the provisioning of a namespace in a GitOps repo | v1.12.2 |
 | [gitops-repo](https://github.com/cloud-native-toolkit/terraform-tools-gitops) | Module to provision and set up a GitOps repository | v1.23.3 |
-| [argocd-bootstrap](https://github.com/cloud-native-toolkit/terraform-tools-argocd-bootstrap) | Module to provision ArgoCD and bootstrap an application using the GitOps repo | v1.12.0 |
+| [argocd-bootstrap](https://github.com/cloud-native-toolkit/terraform-tools-argocd-bootstrap) | Module to provision ArgoCD and bootstrap an application using the GitOps repo | v1.13.0 |
 | [ocp-login](https://github.com/cloud-native-toolkit/terraform-ocp-login) | Module to perform a simple cluster login and provide the cluster path | v1.6.0 |
 | [olm](https://github.com/cloud-native-toolkit/terraform-k8s-olm) | Installs Operator Lifecycle Manager in the cluster | v1.3.5 |
 | [util-clis](https://github.com/cloud-native-toolkit/terraform-util-clis) | Module to install clis into local bin directory | v1.18.2 |

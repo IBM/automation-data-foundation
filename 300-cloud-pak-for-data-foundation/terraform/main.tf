@@ -45,7 +45,7 @@ module "gitops_repo" {
   username = var.gitops_repo_username
 }
 module "gitops-cp4d-deployer" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-cp4d-deployer?ref=v0.0.2"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-cp4d-deployer?ref=v0.0.4"
 
   cluster_ingress = var.cluster_ingress
   cluster_name = var.cluster_name
@@ -87,6 +87,7 @@ module "gitops-cp4d-deployer" {
   instance_namespace = var.gitops-cp4d-deployer_instance_namespace
   kubeseal_cert = module.gitops_repo.sealed_secrets_cert
   namespace = module.cloud_pak_deployer_namespace.name
+  sequential_install = var.gitops-cp4d-deployer_sequential_install
   server_name = module.gitops_repo.server_name
 }
 module "util-clis" {

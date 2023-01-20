@@ -5,12 +5,12 @@ variable "deployer_storage_class" {
 }
 variable "gitops-cp4d-deployer_instance_namespace" {
   type = string
-  description = "The namespace where the cloud pak deployer instance will be deployed"
+  description = "The namespace where the cloud pak deployer job will be deployed"
   default = "cpd-instance"
 }
 variable "cluster_name" {
   type = string
-  description = "The cluster name where the cloud pak deployer will be deployed"
+  description = "The namespace where the cloud pak deployer will be deployed"
 }
 variable "cluster_ingress" {
   type = string
@@ -24,13 +24,18 @@ variable "entitlement_key" {
   type = string
   description = "The Cloud Pak entitlement key"
 }
+variable "gitops-cp4d-deployer_sequential_install" {
+  type = bool
+  description = "Deploy in sequence.  Default is parallel deployment"
+  default = false
+}
 variable "install_scheduler" {
   type = bool
   description = "Install scheduler cartridge"
 }
 variable "install_analyticsengine" {
   type = bool
-  description = "Install analyticsengine cartridge"
+  description = "Install Analytics Engine cartridge"
 }
 variable "install_bigsql" {
   type = bool

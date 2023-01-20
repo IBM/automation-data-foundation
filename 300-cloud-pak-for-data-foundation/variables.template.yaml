@@ -5,7 +5,7 @@ variables:
     value: ocs-storagecluster-cephfs
   - name: cluster_name
     type: string
-    description: The cluster name where the cloud pak deployer will be deployed
+    description: The namespace where the cloud pak deployer will be deployed
     value: cloud-pak-for-data
   - name: cluster_ingress
     type: string
@@ -13,7 +13,7 @@ variables:
   - name: cpd_version
     type: string
     description: The CP4D version to deploy.
-    value: 4.5.0
+    value: 4.6.1
   - name: entitlement_key
     type: string
     description: The Cloud Pak entitlement key
@@ -23,7 +23,7 @@ variables:
     value: false
   - name: install_analyticsengine
     type: bool
-    description: Install analyticsengine cartridge
+    description: Install Analytics Engine cartridge
     value: false
   - name: install_bigsql
     type: bool

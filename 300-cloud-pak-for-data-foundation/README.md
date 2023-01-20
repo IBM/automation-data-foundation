@@ -57,7 +57,7 @@ already be in .gitignore.
 
 | Name | Description | Version |
 |------|-------------|---------|
-| [gitops-cp4d-deployer](https://github.com/cloud-native-toolkit/terraform-gitops-cp4d-deployer) | Module to populate a gitops repo with the resources to provision IBM Cloud Pak for Data using the Cloud Pak Deployer | v0.0.2 |
+| [gitops-cp4d-deployer](https://github.com/cloud-native-toolkit/terraform-gitops-cp4d-deployer) | Module to populate a gitops repo with the resources to provision IBM Cloud Pak for Data using the Cloud Pak Deployer | v0.0.4 |
 | [gitops-namespace](https://github.com/cloud-native-toolkit/terraform-gitops-namespace) | Module to configure the provisioning of a namespace in a GitOps repo | v1.15.0 |
 | [gitops-namespace](https://github.com/cloud-native-toolkit/terraform-gitops-namespace) | Module to configure the provisioning of a namespace in a GitOps repo | v1.15.0 |
 | [gitops-repo](https://github.com/cloud-native-toolkit/terraform-tools-gitops) | Module to provision and set up a GitOps repository | v1.23.3 |
@@ -68,12 +68,12 @@ already be in .gitignore.
 | Name | Description | Sensitive | Default value |
 |------|-------------|-----------|---------------|
 | deployer_storage_class | Storage class to be used by the cloud pak deployer |  | ocs-storagecluster-cephfs |
-| cluster_name | The cluster name where the cloud pak deployer will be deployed |  | cloud-pak-for-data |
+| cluster_name | The namespace where the cloud pak deployer will be deployed |  | cloud-pak-for-data |
 | cluster_ingress | The ingress subdomain for the cluster |  |  |
-| cpd_version | The CP4D version to deploy. |  | 4.5.0 |
+| cpd_version | The CP4D version to deploy. |  | 4.6.0 |
 | entitlement_key | The Cloud Pak entitlement key |  |  |
 | install_scheduler | Install scheduler cartridge |  | false |
-| install_analyticsengine | Install analyticsengine cartridge |  | false |
+| install_analyticsengine | Install Analytics Engine cartridge |  | false |
 | install_bigsql | Install bigsql cartridge |  | false |
 | install_ca | Install ca cartridge |  | false |
 | install_cde | Install cde cartridge |  | false |

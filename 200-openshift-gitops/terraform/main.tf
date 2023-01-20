@@ -1,11 +1,12 @@
 module "argocd-bootstrap" {
-  source = "github.com/cloud-native-toolkit/terraform-tools-argocd-bootstrap?ref=v1.12.0"
+  source = "github.com/cloud-native-toolkit/terraform-tools-argocd-bootstrap?ref=v1.13.0"
 
   bootstrap_path = module.gitops_repo.bootstrap_path
   bootstrap_prefix = var.argocd-bootstrap_bootstrap_prefix
   cluster_config_file = module.cluster.config_file_path
   cluster_type = module.cluster.platform.type_code
   create_webhook = var.argocd-bootstrap_create_webhook
+  git_ca_cert = module.gitops_repo.config_ca_cert
   git_token = module.gitops_repo.config_token
   git_username = module.gitops_repo.config_username
   gitops_repo_url = module.gitops_repo.config_repo_url

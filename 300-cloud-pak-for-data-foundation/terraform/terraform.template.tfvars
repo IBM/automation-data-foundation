@@ -1,14 +1,14 @@
 ## deployer_storage_class: Storage class to be used by the cloud pak deployer
 #deployer_storage_class="ocs-storagecluster-cephfs"
 
-## cluster_name: The cluster name where the cloud pak deployer will be deployed
+## cluster_name: The namespace where the cloud pak deployer will be deployed
 #cluster_name="cloud-pak-for-data"
 
 ## cluster_ingress: The ingress subdomain for the cluster
 #cluster_ingress=""
 
 ## cpd_version: The CP4D version to deploy.
-#cpd_version="4.5.0"
+#cpd_version="4.6.0"
 
 ## entitlement_key: The Cloud Pak entitlement key
 #entitlement_key=""
@@ -16,7 +16,7 @@
 ## install_scheduler: Install scheduler cartridge
 #install_scheduler=""
 
-## install_analyticsengine: Install analyticsengine cartridge
+## install_analyticsengine: Install Analytics Engine cartridge
 #install_analyticsengine=""
 
 ## install_bigsql: Install bigsql cartridge
