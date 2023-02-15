@@ -45,7 +45,7 @@ module "gitops_repo" {
   username = var.gitops_repo_username
 }
 module "gitops-cp4d-deployer" {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-cp4d-deployer?ref=v0.0.5"
+  source = "github.com/cloud-native-toolkit/terraform-gitops-cp4d-deployer?ref=v0.0.6"
 
   cluster_ingress = var.cluster_ingress
   cluster_name = var.cluster_name
